@@ -1,0 +1,188 @@
+﻿// ==PREPROCESSOR==
+// @name "DarkOne Button Panel"
+// @version "4.0 build20130322"
+// @author "tedGo, based on a sample by T.P Wang"
+// @import "%fb2k_path%themes\DarkOne_v4.0\Others\WSH Scripts\DO 4.0 Global Script.js"
+// @import "%fb2k_path%themes\DarkOne_v4.0\Others\WSH Scripts\DO 4.0 Global Button Script.js"
+// ==/PREPROCESSOR==
+
+window.MinWidth = 408;
+
+// To enter commands for custom buttons please scroll down to line 41 and overwrite "type command here"
+// with your desired command. You see some examples here in the pre-defined buttons from line 18 to 23.
+
+// ----- CREATE BUTTONS -----
+var c = {normal: imgPath + "BigNormal.png", hover: imgPath + "BigHover.png", down: imgPath + "BigDown.png"};
+var d = {normal: imgPath + "SmallNormal.png", hover: imgPath + "SmallHover.png", down: imgPath + "SmallDown.png"};
+
+Buttons.exit = new Button(Math.max(0, ww / 2 - 226), 0, 58, 30, c, function(){fb.Exit();});
+Buttons.console = new Button(Math.max(0, ww / 2 - 226), 53, 58, 14, d, function(){fb.ShowConsole();});
+Buttons.statuspane = new Button(ww / 2 - 141, 53, 58, 14, d, function(){fb.RunMainMenuCommand("Show Status pane");});
+Buttons.statusbar = new Button(ww / 2 - 85, 53, 58, 14, d, function(){fb.RunMainMenuCommand("Show Status bar");});
+Buttons.MEN = new Button(Math.min(ww - 58, ww / 2 + 168), 16, 58, 14, d, getMainMenu);
+Buttons.REM = new Button(Math.min(ww - 58, ww / 2 + 168), 53, 58, 14, d, function () {window.SetProperty("1. Remain Time", t_r ? false : true); TimeOpt();});
+
+var tbtnl_b = window.GetProperty("2. Button top left", false);
+if (tbtnl_b) var tbtnl_d = window.GetProperty("2. Button top left description (up to 10 letters)", "BUTTON 1");
+else window.SetProperty("2. Button top left description (up to 10 letters)", null);
+
+var tbtnr_b = window.GetProperty("3. Button top right", false);
+if (tbtnr_b) var tbtnr_d = window.GetProperty("3. Button top right description (up to 10 letters)", "BUTTON 2");
+else window.SetProperty("3. Button top right description (up to 10 letters)", null);
+
+var bbtnl_b = window.GetProperty("4. Button bottom left", false);
+if (bbtnl_b) var bbtnl_d = window.GetProperty("4. Button bottom left description (up to 10 letters)", "BUTTON 3");
+else window.SetProperty("4. Button bottom left description (up to 10 letters)", null);
+
+var bbtnr_b = window.GetProperty("5. Button bottom right", false);
+if (bbtnr_b) var bbtnr_d = window.GetProperty("5. Button bottom right description (up to 10 letters)", "BUTTON 4");
+else window.SetProperty("5. Button bottom right description (up to 10 letters)", null);
+
+if (tbtnl_b) Buttons.top_l = new Button(ww / 2 + 27, 16, 58, 14, d, function(){"type command here"});
+if (tbtnr_b) Buttons.top_r = new Button(ww / 2 + 83, 16, 58, 14, d, function(){"type command here"});
+if (bbtnl_b) Buttons.bottom_l = new Button(ww / 2 + 27, 53, 58, 14, d, function(){"type command here"});
+if (bbtnr_b) Buttons.bottom_r = new Button(ww / 2 + 83, 53, 58, 14, d, function(){"type command here"});
+
+// ----- CREATE MENUS -----
+function getMainMenu(x, y) {
+	x = Buttons.MEN.left;
+	y = Buttons.MEN.top;
+
+	var a = window.CreatePopupMenu();
+	var b = fb.CreateContextMenuManager();
+
+	b.InitNowPlaying();
+
+	var c1 = window.CreatePopupMenu();
+	var c2 = window.CreatePopupMenu();
+	var c3 = window.CreatePopupMenu();
+	var c4 = window.CreatePopupMenu();
+	var c5 = window.CreatePopupMenu();
+	var c6 = window.CreatePopupMenu();
+	var c7 = window.CreatePopupMenu();
+
+	var d1 = fb.CreateMainMenuManager();
+	var d2 = fb.CreateMainMenuManager();
+	var d3 = fb.CreateMainMenuManager();
+	var d4 = fb.CreateMainMenuManager();
+	var d5 = fb.CreateMainMenuManager();
+	var d6 = fb.CreateMainMenuManager();
+
+	c1.AppendTo(a, 16, "File");
+	c2.AppendTo(a, 16, "Edit");
+	c3.AppendTo(a, 16, "View");
+	c4.AppendTo(a, 16, "Playback");
+	c5.AppendTo(a, 16, "Library");
+	c6.AppendTo(a, 16, "Help");
+	fb.IsPlaying && c7.AppendTo(a, 16, "Now Playing");
+
+	d1.Init("file");
+	d2.Init("edit");
+	d3.Init("View");
+	d4.Init("playback");
+	d5.Init("library");
+	d6.Init("help");
+
+	d1.BuildMenu(c1, 1, 200);
+	d2.BuildMenu(c2, 201, 200);
+	d3.BuildMenu(c3, 401, 200);
+	d4.BuildMenu(c4, 601, 300);
+	d5.BuildMenu(c5, 901, 300);
+	d6.BuildMenu(c6, 1201, 100);
+
+	b.InitNowPlaying();
+	b.BuildMenu(c7, 1301, -1);
+	ret = 0;
+
+	ret = a.TrackPopupMenu(x, y);
+
+	switch (true) {
+		case(ret >= 1 && ret < 201):
+			d1.ExecuteByID(ret - 1);
+			break;
+
+		case (ret >= 201 && ret < 401):
+			d2.ExecuteByID(ret - 201);
+			break;
+
+		case (ret >= 401 && ret < 601):
+			d3.ExecuteByID(ret - 401);
+			break;
+
+		case (ret >= 601 && ret < 901):
+			d4.ExecuteByID(ret - 601);
+			break;
+
+		case (ret >= 901 && ret < 1201):
+			d5.ExecuteByID(ret - 901);
+			break;
+
+		case (ret >= 1201 && ret < 1301):
+			d6.ExecuteByID(ret - 1201);
+			break;
+
+		case (ret >= 1301):
+			b.ExecuteByID(ret - 1301);
+			break;
+	}
+
+	a.Dispose();
+	b.Dispose();
+	d1.Dispose();
+	d2.Dispose();
+	d3.Dispose();
+	d4.Dispose();
+	d5.Dispose();
+	d6.Dispose();
+}
+
+// ----- CREATE TIMESWITCH OPTION -----
+function TimeOpt() {
+	t_r = window.GetProperty("1. Remain Time", false);
+	window.NotifyOthers("remTime", t_r);
+}
+
+TimeOpt();
+
+// ----- DRAW -----
+function on_paint(gr) {
+	if (!window.IsTransparent) {
+		gr.FillSolidRect(0, 0, ww, wh, ui_backcol);
+		gr.FillGradRect(0, -22, ww, 75, 90, RGBA(63, 100, 127, 128), 0);
+	}
+
+	g_signs && gr.DrawImage(g_signs, Math.max(23, ww / 2 - 203), 10, 12, 10, 808, 0, 12, 10);
+	gr.GdiDrawText("CONSOLE", btn_font, ui_btntxtcol, Math.max(0, ww / 2 - 226), 38, 58, 8, 33);
+	gr.GdiDrawText("PANE", btn_font, ui_btntxtcol, ww / 2 - 138, 38, 54, 10, 32);
+	gr.DrawLine(ww / 2 - 108, 43, ww / 2 - 108, 44, 15, ui_btntxtcol);
+	gr.GdiDrawText("STATUS", btn_font, ui_btntxtcol, ww / 2 - 110, 38, 54, 8, 33);
+	gr.DrawLine(ww / 2 - 56, 43, ww / 2 - 56, 44, 20, ui_btntxtcol);
+	gr.GdiDrawText("BAR", btn_font, ui_btntxtcol, ww / 2 - 84, 38, 54, 8, 34);
+	gr.GdiDrawText("MENU", btn_font, ui_btntxtcol, Math.min(ww - 58, ww / 2 + 168), 1, 58, 8, 33);
+	gr.GdiDrawText("TIME", btn_font, ui_btntxtcol, Math.min(ww - 58, ww / 2 + 168), 38, 58, 8, 33);
+
+	tbtnl_b && gr.GdiDrawText(tbtnl_d, btn_font, ui_btntxtcol, ww / 2 + 27, 1, 58, 8, 33);
+	tbtnr_b && gr.GdiDrawText(tbtnr_d, btn_font, ui_btntxtcol, ww / 2 + 83, 1, 58, 8, 33);
+	bbtnl_b && gr.GdiDrawText(bbtnl_d, btn_font, ui_btntxtcol, ww / 2 + 27, 38, 58, 8, 33);
+	bbtnr_b && gr.GdiDrawText(bbtnr_d, btn_font, ui_btntxtcol, ww / 2 + 83, 38, 58, 8, 33);
+
+	buttonsDraw(gr);
+}
+
+// ----- EVENTS -----
+function on_size() {
+	ww = window.Width;
+	wh = window.Height;
+
+	Buttons.exit.changePos(Math.max(0, ww / 2 - 226), 0, 58, 30);
+	Buttons.console.changePos(Math.max(0, ww / 2 - 226), 53, 58, 14);
+	Buttons.statuspane.changePos(ww / 2 - 141, 53, 58, 14);
+	Buttons.statusbar.changePos(ww / 2 - 85, 53, 58, 14);
+	Buttons.MEN.changePos(Math.min(ww - 58, ww / 2 + 168), 16, 58, 14);
+	Buttons.REM.changePos(Math.min(ww - 58, ww / 2 + 168), 53, 58, 14);
+
+	tbtnl_b && Buttons.top_l.changePos(ww / 2 + 27, 16, 58, 14);
+	tbtnr_b && Buttons.top_r.changePos(ww / 2 + 83, 16, 58, 14);
+	bbtnl_b && Buttons.bottom_l.changePos(ww / 2 + 27, 53, 58, 14);
+	bbtnr_b && Buttons.bottom_r.changePos(ww / 2 + 83, 53, 58, 14);
+}

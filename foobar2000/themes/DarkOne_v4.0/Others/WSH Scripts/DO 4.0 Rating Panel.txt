@@ -1,0 +1,369 @@
+﻿// ==PREPROCESSOR==
+// @name "DarkOne Rating Panel"
+// @version "4.0 build20130322"
+// @author "super-gau and tedGo"
+// @import "%fb2k_path%themes\DarkOne_v4.0\Others\WSH Scripts\DO 4.0 Global Script.js"
+// @feature "v1.4"
+// @feature "watch-metadb"
+// ==/PREPROCESSOR==
+
+window.MinWidth = window.MaxWidth = 80;
+window.MinHeight = window.MaxHeight = 16;
+
+// ----- CREATE RATING BUTTON -----
+var p_ctr = fb.TitleFormat("$if2(%play_count%,0)");
+var g_tooltip = window.CreateTooltip();
+
+function RatingButton(x, y, rW) {
+	this.left = x;
+	this.top = y;
+	this.ratingWidth = rW;
+	this.normalImage = null;
+	this.ratingImageArray = null;
+	this.img = null;	
+	this.curRating = -1;
+	this.controler = null;
+	this.active = false;
+
+	this.toolTips = new Array("Bad", "Average", "Good", "Very Good", "Excellent");
+
+	this.changeRating = function() {
+		if (this.curRating < 0 || !this.active) {
+			if (this.normalImage) this.img = gdi.Image(this.normalImage);
+		} else if (this.ratingImageArray) if (this.ratingImageArray[this.curRating]) this.img = gdi.Image(this.ratingImageArray[this.curRating]);
+		window.Repaint();		
+	}
+
+	this.showToolTip = function() {
+		var getMode = this.controler.getModus();
+		g_tooltip.Deactivate();
+		if (this.active && this.curRating > -1 && fb.IsPlaying) {
+			var ratingIndex = Math.min(this.curRating, 4);
+			if (getMode == 0) {
+				g_tooltip.Text = this.toolTips[ratingIndex];
+				window.SetCursor(32649);
+			} else if (getMode == 1) g_tooltip.Text = "Autorate-Index: " + this.controler.arIdx;
+			else g_tooltip.Text = "Playcounts: " + p_ctr.Eval();
+			g_tooltip.Activate();
+		}
+	}
+
+	this.draw = function(gr) {
+		this.img && gr.DrawImage(this.img, this.left, this.top, this.img.Width, this.img.Height, 0, 0, this.img.Width, this.img.Height);
+	}
+
+	this.onClick = function() {
+		this.active && this.curRating > -1 && this.controler.setRating(this.curRating + 1);
+	}
+
+	this.on_mouse_move = function(x, y) {
+		if (this.active) {
+			var ratingIndex = 0;
+			var _x = x - this.left;
+			if (_x > 0 && _x < this.ratingWidth * 5) {
+				ratingIndex = Math.floor(_x / this.ratingWidth);
+				ratingIndex = Math.min(ratingIndex, 5);
+				if (this.curRating != ratingIndex) {
+					this.curRating = ratingIndex;
+					this.changeRating();
+					this.showToolTip();
+				}
+			}
+		}
+	}
+
+	this.on_mouse_leave = function() {
+		this.curRating = -1;
+		this.changeRating();
+		g_tooltip.Deactivate();
+	}
+
+	this.init = function() {
+		this.on_playback_new_track(fb.GetNowPlaying());	
+	}
+
+	this.on_playback_new_track = function(metadb) {
+		if (metadb) this.active = fb.PlaybackLength <= 0 || metadb.RawPath.indexOf("FOO_LASTFM" ) == 0 ? false : true;
+	}
+
+	this.on_playback_stop = function(reason) {
+		if (reason != 2) this.active = false;
+	}
+
+	this.setRatingImages = function(normalImg, hoverImg) {
+		this.normalImage = normalImg;
+		this.ratingImageArray = hoverImg;
+		this.changeRating();
+	}
+
+	this.setControler = function(controler) {
+		this.controler = controler;
+	}
+}
+
+button = new RatingButton(0, 0, 16);
+button.init();
+
+function StateControler(ratingButton) {
+	this.ratingButton = ratingButton;
+	this.ratingButton.setControler(this);
+	this.curMetadb = null;
+	this.RATING = "RATING";
+	this.curModus = null;
+	this.active = false;
+
+	var Colours = {manRating:"White", dataBase:"Yellow", playCount:"Green", autoRating:"Blue"};
+
+	this.DisplayMode = function() {
+		this.dm_cur = window.GetProperty("Display Mode", 0);
+		if (typeof(this.dm_cur) != "number" || this.dm_cur < 0 || this.dm_cur > 2) this.dm_cur = 0;
+		return this.dm_cur;
+	}
+
+	this.RatingMode = function() {
+		this.rm_cur = window.GetProperty("Rating Mode", 0);
+		if (typeof(this.rm_cur) != "number" || this.rm_cur < 0 || this.rm_cur > 2) this.rm_cur = 0;
+		return this.rm_cur;
+	}
+
+	this.CountLimit = function() {
+		this.cntlmt = window.GetProperty("Playcounter Limit", 50);
+		if (typeof(this.cntlmt) != "number") this.cntlmt = 50;
+		else if (this.cntlmt < 0) this.cntlmt = 0;
+		return this.cntlmt;
+	}
+
+	this.setRating = function(ratingIndex) {
+		if (this.active) {
+			var modus = this.DisplayMode();
+			this.curModus = modus;
+			if (modus == 0) {
+				if (this.RatingMode() == 1) {
+					this.SetMetaRating(ratingIndex);
+					fb.RunContextCommand("Rating" + "/" + "<not set>");
+				} else {
+					fb.RunContextCommand("Rating" + "/" + ratingIndex);
+					this.SetMetaRating("");
+				}
+			}
+			this.on_metadb_changed();
+		}
+	}
+
+	this.SetMetaRating = function(rating) {
+		this.curMetadb && this.curMetadb.UpdateFileInfoSimple(this.RATING, rating);
+	}
+
+	this.init = function() {
+		this.on_playback_new_track(fb.GetNowPlaying());	
+	}
+
+	this.on_playback_new_track = function(metadb) {
+		if (metadb) this.active = fb.PlaybackLength <= 0 || metadb.RawPath.indexOf("FOO_LASTFM" ) == 0 ? false : true;
+		if (this.curMetadb = metadb) {
+			on_metadb_changed();
+		}
+	}
+
+	this.on_metadb_changed = function() {
+		if (this.active) {
+			var modus = this.DisplayMode();
+			this.curModus = modus;
+			if (modus == 2) this.SetRatingDisplay(Colours.playCount, this.GetPlayCounts(), modus);
+			else if (modus == 1) this.SetRatingDisplay(Colours.autoRating, this.GetAutoRating(), modus);
+			else if (this.RatingMode() == 1) this.IsMetaRating() ? this.SetRatingDisplay(Colours.manRating, this.GetMetaRating(), modus) : this.SetRatingDisplay(Colours.manRating, this.GetDBRating(), modus);
+			else this.GetDBRating() > 0 ? this.SetRatingDisplay(Colours.manRating, this.GetDBRating(), modus) : this.SetRatingDisplay(Colours.manRating, this.GetMetaRating(), modus);
+		} else this.ratingButton.setRatingImages(imgPath + "Grey.png", null);
+	}
+
+	this.on_playback_stop = function(reason) {
+		if (reason != 2) this.active = false;
+	}
+
+	this.GetMetaRating = function() {
+		if (this.curMetadb) {
+			var fileInfo = this.curMetadb.GetFileInfo();
+			if (fileInfo) {
+				var idx = fileInfo.MetaFind(this.RATING);
+				if (idx > 0) {
+					var rating = fileInfo.MetaValue(idx, 0);
+					return Math.min(rating, 5);
+				} else return 0;
+			}
+		} else return 0;
+	}
+
+	this.IsMetaRating = function() {
+		return this.GetMetaRating() > 0;
+	}
+
+	this.GetDBRating = function() {
+		return fb.TitleFormat("$if2(%rating%,0)").Eval();
+	}
+
+	this.GetAutoRating = function() {
+		if (this.DisplayMode() == 1) {
+			var pcntr = p_ctr.Eval();
+			var fpy = fb.TitleFormat("$year(%first_played%)").Eval();
+			var fpm = fb.TitleFormat("$sub($month(%first_played%),1)").Eval();
+			var fpd = fb.TitleFormat("$day_of_month(%first_played%)").Eval();
+			var fday = new Date(fpy, fpm, fpd);
+			var today = new Date();
+			var ar_days = Math.floor((today.getTime() - fday.getTime()) / (1000 * 60 * 60 * 24));
+			var ar_count = (pcntr * 5) - Math.floor(ar_days / 7.3);
+			this.arIdx = pcntr > 0 ? ar_count / 10 : 0;
+			var rating = Math.floor(ar_count / 10);
+			return Math.max(Math.min(rating, 5), 0);
+		} else return 0;
+	}
+
+	this.GetPlayCounts = function() {
+		if (this.DisplayMode() == 2) {
+			var rating = Math.floor(p_ctr.Eval() / (this.CountLimit() / 5));
+			return Math.max(Math.min(rating, 5), 0);
+		} else return 0;
+	}
+
+	this.SetRatingDisplay = function(normalColour, ratingIndex, modus) {
+		var hoverImg = null;
+		if (modus == 0 && this.RatingMode() == 1) hoverImg = this.getHoverImages(Colours.manRating);
+		else if (modus == 0) hoverImg = this.getHoverImages(Colours.dataBase);
+		var normalImg = null;
+		normalImg = imgPath + normalColour + ratingIndex + ".png";
+		this.ratingButton.setRatingImages(normalImg, hoverImg);
+	}
+
+	this.getHoverImages = function(colour) {
+		for (var hoverImageArray = [], i = 1; i < 6; i++) hoverImageArray.push(imgPath + colour + "MH"+ i +".png");
+		return hoverImageArray;
+	}
+
+	this.getModus = function() {
+		return this.curModus;
+	}
+}
+
+stateControler = new StateControler(button);
+stateControler.init();
+
+// ----- CREATE MENU -----
+function CustomMenu(x, y) {
+	var arr = new Array(5, 10, 25, 50, 100, 250);
+	var a = stateControler.GetDBRating() > 0 || stateControler.IsMetaRating() ? 0 : 1;
+	var c = stateControler.DisplayMode() == 0 ? 0 : 1;
+	var d = stateControler.DisplayMode() == 2 ? 0 : 1;
+	var e = stateControler.CountLimit();
+	var f = null;
+	var g = window.CreatePopupMenu();
+	var h = window.CreatePopupMenu();
+	var idx;
+
+	for (var i = 0; i < arr.length; i++) {
+		h.AppendMenuItem(0, 101 + i, arr[i]);
+		if (e == arr[i]) f = 101 + i;
+	}
+	f && h.CheckMenuRadioItem(101, 106, f);
+
+	g.AppendMenuItem(a, 1, "Delete rating");
+	g.AppendMenuSeparator();
+	g.AppendMenuItem(0, 2, "Show/enable rating");
+	g.AppendMenuItem(0, 3, "Show auto-rating");
+	g.AppendMenuItem(0, 4, "Show playcounts");
+	g.CheckMenuRadioItem(2, 4, stateControler.DisplayMode() + 2);
+	g.AppendMenuSeparator();
+	g.AppendMenuItem(c, 5, "Rate to the database");
+	g.AppendMenuItem(c, 6, "Rate to the file tags");
+	g.CheckMenuRadioItem(5, 6, stateControler.RatingMode() + 5);
+	g.AppendMenuSeparator();
+	h.AppendTo(g, d | 16, "Playcount limit");
+	g.AppendMenuSeparator();
+	g.AppendMenuItem(0, 7, "Properties");
+	g.AppendMenuItem(0, 8, "Configure...");
+
+	idx = g.TrackPopupMenu(x, y);
+
+	switch (true) {
+		case (idx >= 101 && idx <= 106):
+			window.SetProperty("Playcounter Limit", arr[idx - 101]);
+			stateControler.init();
+			break;
+
+		case (idx == 1):
+			fb.RunContextCommand("Rating" + "/" + "<not set>");
+			stateControler.SetMetaRating("");
+			stateControler.init()
+			break;
+
+		case (idx >= 2 && idx <= 4):
+			window.SetProperty("Display Mode", idx - 2);
+			stateControler.init();
+			break;
+
+		case (idx >= 5 && idx <= 6):
+			window.SetProperty("Rating Mode", idx - 5);
+			stateControler.init();
+			break;
+
+		case (idx == 7):
+			window.ShowProperties();
+			break;
+
+		case (idx == 8):
+			window.ShowConfigure();
+			break;
+	}
+
+	g.Dispose();
+	h.Dispose();
+}
+
+// ----- DRAW -----
+var g_img = gdi.Image(imgPath + "Grey.png");
+
+function on_paint(gr) {
+	if (!window.IsTransparent) gr.FillSolidRect(0, 0, window.Width, window.Height, ui_backcol);
+	fb.IsPlaying && button ? button.draw(gr) : g_img && gr.DrawImage(g_img, 0, 0, 80, 16, 0, 0, g_img.Width, g_img.Height);
+}
+
+// ----- MOUSE ACTIONS -----
+var g_down = false;
+
+function on_mouse_move(x, y) {
+	button.on_mouse_move(x, y);
+}
+
+function on_mouse_lbtn_down(x, y) {
+	g_down = true;
+}
+
+function on_mouse_lbtn_up(x, y) {
+	g_down && button.onClick(x, y);
+	g_down = false;
+}
+
+function on_mouse_rbtn_up(x, y) {
+	CustomMenu(x, y);
+	return true;
+}
+
+function on_mouse_leave() {
+	button && button.on_mouse_leave();
+}
+
+// ----- EVENTS -----
+function on_metadb_changed() {
+	stateControler.on_metadb_changed( );
+	window.Repaint();
+}
+
+function on_playback_new_track(metadb) {
+	stateControler.on_playback_new_track(metadb);
+	button.on_playback_new_track(metadb);
+	window.Repaint();
+}
+
+function on_playback_stop(reason) {
+	stateControler.on_playback_stop(reason);
+	button.on_playback_stop(reason);
+	window.Repaint();
+}

@@ -1,0 +1,22 @@
+Version 4.0
+build20140207
+* updated: component package
+* removed: enabling windows scripting host through batch file
+* removed: additional dll's for waveform seekbar (are included now)
+build20130603
+* fixed: freezing window with aac streams
+* fixed: display issue with aac streams
+* updated: component package
+* added: needed dll's for waveform seekbar (temporarily)
+build20130502
+* fixed: small cosmetic error in Manual
+* fixed: rare crash in Display Panel with Pregap including Cuefiles
+build20130403
+* fixed: display glitch in ELPlaylist Popup window
+* fixed: rare crash in Display Panel when playback time is NaN
+* updated: component package
+build20130326
+* fixed: crash in Display Panel with FLAC TAGZ
+* updated: component package
+build20130322
+* Initial release of new design

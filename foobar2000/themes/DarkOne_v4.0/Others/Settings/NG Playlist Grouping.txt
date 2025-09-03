@@ -1,0 +1,1 @@
+$rgb(128,192,255)$upper($if2(%band%,$if2(%album artist%,Various Artists))) $rgb(0,128,255)$char(8226) $rgb(128,192,255)$upper($if(%album%,%album%[ -  Disc %discnumber%][/%totaldiscs%],%directoryname%))$tab()

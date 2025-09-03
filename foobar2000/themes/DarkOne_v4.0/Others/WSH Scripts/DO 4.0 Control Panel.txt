@@ -1,0 +1,424 @@
+﻿// ==PREPROCESSOR==
+// @name "DarkOne Control Panel"
+// @version "4.0 build20130322"
+// @author "tedGo, based on a sample created by T.P. Wang, using partial code by Br3tt"
+// @import "%fb2k_path%themes\DarkOne_v4.0\Others\WSH Scripts\DO 4.0 Global Script.js"
+// @import "%fb2k_path%themes\DarkOne_v4.0\Others\WSH Scripts\DO 4.0 Button Object Script.js"
+// ==/PREPROCESSOR==
+
+window.MinWidth = 408;
+
+// To enter commands for custom buttons please scroll down to line 69 and overwrite "type command here"
+// with your desired command. You see some examples here in the pre-defined buttons from line 19 to 27.
+
+// ----- CREATE BUTTONS -----
+var p_arr = new Array("Default", "Repeat (Playlist)", "Repeat (Track)", "Random", "Shuffle (tracks)", "Shuffle (albums)", "Shuffle (folders)");
+var a = {normal: imgPath + "BigNormal.png", hover: imgPath + "BigHover.png", down: imgPath + "BigDown.png"};
+var b = {normal: imgPath + "SmallNormal.png", hover: imgPath + "SmallHover.png", down: imgPath + "SmallDown.png"};
+
+Buttons.open = new Button(Math.max(0, ww / 2 - 226), 0, 58, 30, a, getOpenMenu);
+Buttons.prev = new Button(ww / 2 - 141, 0, 58, 30, a, function(){fb.Prev();});
+Buttons.pause = new Button(ww / 2 - 85, 0, 58, 30, a, function(){fb.Pause();});
+Buttons.play = new Button(ww / 2 - 29, 0, 58, 30, a, function(){fb.Play();});
+Buttons.stop = new Button(ww / 2 + 27, 0, 58, 30, a, function(){fb.Stop(); fb.RunMainMenuCommand("ELPlaylist/Redraw");});
+Buttons.next = new Button(ww / 2 + 83, 0, 58, 30, a, function(){fb.Next();});
+Buttons.random = new Button(Math.min(ww - 58, ww / 2 + 168), 0, 58, 30, a, function(){fb.Random();});
+Buttons.sac = new Button(Math.max(0, ww / 2 - 226), 53, 58, 14, b, function () {fb.RunMainMenuCommand("Playback/Stop After Current");});
+Buttons.pbo = new Button(Math.max(0, ww / 2 - 226), 90, 58, 14, b, getPBOMenu);
+
+var cbtn1_b = window.GetProperty("01. Button center 1", false);
+if (cbtn1_b) var cbtn1_d = window.GetProperty("01. Button center 1 description (up to 10 letters)", "BUTTON 1");
+else window.SetProperty("01. Button center 1 description (up to 10 letters)", null);
+
+var cbtn2_b = window.GetProperty("02. Button center 2", false);
+if (cbtn2_b) var cbtn2_d = window.GetProperty("02. Button center 2 description (up to 10 letters)", "BUTTON 2");
+else window.SetProperty("02. Button center 2 description (up to 10 letters)", null);
+
+var cbtn3_b = window.GetProperty("03. Button center 3", false);
+if (cbtn3_b) var cbtn3_d = window.GetProperty("03. Button center 3 description (up to 10 letters)", "BUTTON 3");
+else window.SetProperty("03. Button center 3 description (up to 10 letters)", null);
+
+var cbtn4_b = window.GetProperty("04. Button center 4", false);
+if (cbtn4_b) var cbtn4_d = window.GetProperty("04. Button center 4 description (up to 10 letters)", "BUTTON 4");
+else window.SetProperty("04. Button center 4 description (up to 10 letters)", null);
+
+var cbtn5_b = window.GetProperty("05. Button center 5", false);
+if (cbtn5_b) var cbtn5_d = window.GetProperty("05. Button center 5 description (up to 10 letters)", "BUTTON 5");
+else window.SetProperty("05. Button center 5 description (up to 10 letters)", null);
+
+var bbtn1_b = window.GetProperty("06. Button bottom 1", false);
+if (bbtn1_b) var bbtn1_d = window.GetProperty("06. Button bottom 1 description (up to 10 letters)", "BUTTON 6");
+else window.SetProperty("06. Button bottom 1 description (up to 10 letters)", null);
+
+var bbtn2_b = window.GetProperty("07. Button bottom 2", false);
+if (bbtn2_b) var bbtn2_d = window.GetProperty("07. Button bottom 2 description (up to 10 letters)", "BUTTON 7");
+else window.SetProperty("07. Button bottom 2 description (up to 10 letters)", null);
+
+var bbtn3_b = window.GetProperty("08. Button bottom 3", false);
+if (bbtn3_b) var bbtn3_d = window.GetProperty("08. Button bottom 3 description (up to 10 letters)", "BUTTON 8");
+else window.SetProperty("08. Button bottom 3 description (up to 10 letters)", null);
+
+var bbtn4_b = window.GetProperty("09. Button bottom 4", false);
+if (bbtn4_b) var bbtn4_d = window.GetProperty("09. Button bottom 4 description (up to 10 letters)", "BUTTON 9");
+else window.SetProperty("09. Button bottom 4 description (up to 10 letters)", null);
+
+var bbtn5_b = window.GetProperty("10. Button bottom 5", false);
+if (bbtn5_b) var bbtn5_d = window.GetProperty("10. Button bottom 5 description (up to 10 letters)", "BUTTON 10");
+else window.SetProperty("10. Button bottom 5 description (up to 10 letters)", null);
+
+if (cbtn1_b) Buttons.center1 = new Button(ww / 2 - 141, 53, 58, 14, b, function(){"type command here"});
+if (cbtn2_b) Buttons.center2 = new Button(ww / 2 - 85, 53, 58, 14, b, function(){"type command here"});
+if (cbtn3_b) Buttons.center3 = new Button(ww / 2 - 29, 53, 58, 14, b, function(){"type command here"});
+if (cbtn4_b) Buttons.center4 = new Button(ww / 2 + 27, 53, 58, 14, b, function(){"type command here"});
+if (cbtn5_b) Buttons.center5 = new Button(ww / 2 + 83, 53, 58, 14, b, function(){"type command here"});
+if (bbtn1_b) Buttons.bottom1 = new Button(ww / 2 - 141, 90, 58, 14, b, function(){"type command here"});
+if (bbtn2_b) Buttons.bottom2 = new Button(ww / 2 - 85, 90, 58, 14, b, function(){"type command here"});
+if (bbtn3_b) Buttons.bottom3 = new Button(ww / 2 - 29, 90, 58, 14, b, function(){"type command here"});
+if (bbtn4_b) Buttons.bottom4 = new Button(ww / 2 + 27, 90, 58, 14, b, function(){"type command here"});
+if (bbtn5_b) Buttons.bottom5 = new Button(ww / 2 + 83, 90, 58, 14, b, function(){"type command here"});
+
+// ----- CREATE OPEN MENU -----
+function getOpenMenu(x, y) {
+	x = Buttons.open.left;
+	y = Buttons.open.top;
+
+	var j = window.CreatePopupMenu();
+	var o;
+
+	j.AppendMenuItem(0, 1, "Open...");
+	j.AppendMenuItem(0, 2, "Open audio CD...");
+	j.AppendMenuSeparator();
+	j.AppendMenuItem(0, 3, "Add files...");
+	j.AppendMenuItem(0, 4, "Add folders...");
+	j.AppendMenuItem(0, 5, "Add location...");
+
+	o = j.TrackPopupMenu(x, y);
+
+	switch (true) {
+		case (o == 1):
+			fb.RunMainMenuCommand("Open...");
+			break;
+
+		case (o == 2):
+			fb.RunMainMenuCommand("Open audio CD...");
+			break;
+
+		case (o == 3):
+			fb.AddFiles();
+			break;
+
+		case (o == 4):
+			fb.AddDirectory();
+			break;
+
+		case (o == 5):
+			fb.RunMainMenuCommand("Add Location...");
+			break;
+	}
+
+	j.Dispose();
+}
+
+function getPBOMenu(x, y) {
+	x = Buttons.pbo.left;
+	y = Buttons.pbo.top;
+
+	var k = window.CreatePopupMenu();
+	var p;
+
+	for (var l = 0; l < p_arr.length; l++) {
+		k.AppendMenuItem(0, 1 + l, p_arr[l]);
+	}
+	k.CheckMenuRadioItem(1, 7, fb.PlayBackOrder + 1);
+
+	p = k.TrackPopupMenu(x, y);
+	if (p >= 1 && p <= 7) fb.PlaybackOrder = p - 1;
+
+	k.Dispose();
+}
+
+// ----- CREATE VOLUMEKNOB -----
+var g_img = gdi.Image(imgPath + "Volume.png");
+var v_change = false;
+var g_drag = false;
+var g_angle = 270;
+var v_size = 60;
+var i_size = 10;
+var pad = 5;
+
+function VolumeKnob(x, y, w, h) {
+	this.left = x;
+	this.top = y;
+	this.w = w;
+	this.h = h;
+	this.right = x + w;
+	this.bottom = y + h;
+
+	this.traceMouse = function(x, y) {
+		return x >= this.left && x <= this.right && y >= this.top && y <= this.bottom;
+	}
+
+	this.changePos = function(x, y, w, h) {
+		this.left = x;
+		this.top = y;
+		this.w = w;
+		this.h = h;
+		this.right = x + w;
+		this.bottom = y + h;
+	}
+
+	this.calc_theta = function(x, y) {
+		x -= this.left + this.w / 2;
+		y -= this.top + this.h / 2;
+		theta = Math.atan2(y, x) / Math.PI * 180;
+		if (theta <= 90 && theta > 45) return g_angle;
+		if (theta > 90 && theta < 135) return 0;
+		return theta >= 0 ? theta > 90 ? theta - 135 : theta + 225 : theta + 225
+	}
+	
+	this.draw = function(gr) {
+		var g_R = Math.min(this.w, this.h) / Math.PI;
+
+		gr.GdiDrawText("VOLUME", btn_font, ui_btntxtcol, this.left, this.top - 12, this.w, 16, 33);
+		g_img && gr.DrawImage(g_img, this.left, this.top, this.w, this.h, 0, 0, v_size, v_size);
+
+		theta = (Math.pow(10, fb.Volume / 50) - 0.001) / 0.999 * g_angle;
+		posA = (theta - 45) * Math.PI / 180;
+		cosinusA = Math.cos(posA);
+		sinusA = Math.sin(posA);
+		posX = (this.left + (this.w / 2) - pad) - (cosinusA * g_R);
+		posY = (this.top + (this.h / 2) - pad) - (sinusA * g_R);
+
+		x_offset = fb.Volume == -100 ? v_size + 2 * i_size : v_change ? v_size + i_size : v_size;
+		g_img && gr.DrawImage(g_img, posX, posY, i_size, i_size, x_offset, 0, i_size, i_size);
+	}
+
+	this.Repaint = function() {
+		window.RepaintRect(this.left, this.top, this.w, this.h);
+	}
+
+	this.on_mouse_move = function(x, y) {
+		if (this.traceMouse(x, y) && g_drag){
+			n = this.calc_theta(x, y) / g_angle;
+			v = 50 * Math.log(0.99 * n + 0.01) / Math.LN10;
+			if (fb.Volume != v) fb.Volume = v;
+		}
+
+		this.mouseX = x;
+		this.mouseY = y;
+	}
+
+	this.on_mouse_lbtn_down = function(x, y) {
+		g_drag = true;
+	}
+
+	this.on_mouse_lbtn_up = function(x, y) {
+		this.on_mouse_move(x,y);
+		g_drag = false;
+	}
+
+	this.on_mouse_wheel = function(step) {
+		if (this.traceMouse(this.mouseX, this.mouseY)) step > 0 ? fb.VolumeUp() : fb.VolumeDown();
+	}
+
+	this.on_mouse_rbtn_up = function(x, y) {
+		var m = window.CreatePopupMenu();
+		var q;
+
+		m.AppendMenuItem(fb.Volume == 0 ? 1 : 0, 1, "Up");
+		m.AppendMenuItem(fb.Volume == -100 ? 1 : 0, 2, "Down");
+		m.AppendMenuItem(fb.Volume == -100 ? 8 : 0, 3, "Volume Mute");
+		m.AppendMenuSeparator();
+		m.AppendMenuItem(fb.Volume == 0 ? 8 : 0, 4, "Set to -0 db");
+		m.AppendMenuItem(fb.Volume == -3 ? 8 : 0, 5, "Set to -3 db");
+		m.AppendMenuItem(fb.Volume == -6 ? 8 : 0, 6, "Set to -6 db");
+		m.AppendMenuItem(fb.Volume == -9 ? 8 : 0, 7, "Set to -9 db");
+		m.AppendMenuItem(fb.Volume == -12 ? 8 : 0, 8, "Set to -12 db");
+		m.AppendMenuItem(fb.Volume == -15 ? 8 : 0, 9, "Set to -15 db");
+		m.AppendMenuItem(fb.Volume == -18 ? 8 : 0, 10, "Set to -18 db");
+		m.AppendMenuItem(fb.Volume == -21 ? 8 : 0, 11, "Set to -21 db");
+
+		q = m.TrackPopupMenu(x, y);
+        
+		switch (true) {
+			case (q == 1):
+				fb.VolumeUp();
+				break;
+
+			case (q == 2):
+				fb.VolumeDown();
+				break;
+
+			case (q == 3):
+				fb.VolumeMute();
+				break;
+
+			case (q == 4):
+				fb.RunMainMenuCommand("Playback" + "/" + "Volume" + "/" + "Set to -0 db");
+				break;
+
+			case (q == 5):
+				fb.RunMainMenuCommand("Playback" + "/" + "Volume" + "/" + "Set to -3 db");
+				break;
+
+			case (q == 6):
+				fb.RunMainMenuCommand("Playback" + "/" + "Volume" + "/" + "Set to -6 db");
+				break;
+
+			case (q == 7):
+				fb.RunMainMenuCommand("Playback" + "/" + "Volume" + "/" + "Set to -9 db");
+				break;
+
+			case (q == 8):
+				fb.RunMainMenuCommand("Playback" + "/" + "Volume" + "/" + "Set to -12 db");
+				break;
+
+			case (q == 9):
+				fb.RunMainMenuCommand("Playback" + "/" + "Volume" + "/" + "Set to -15 db");
+				break;
+
+			case (q == 10):
+				fb.RunMainMenuCommand("Playback" + "/" + "Volume" + "/" + "Set to -18 db");
+				break;
+
+			case (q == 11):
+				fb.RunMainMenuCommand("Playback" + "/" + "Volume" + "/" + "Set to -21 db");
+				break;
+		}
+
+		m.Dispose();
+	}
+}
+
+volknob = new VolumeKnob(Math.min(ww - 59, ww / 2 + 167), 49, 60, 60);
+
+// ----- DRAW -----
+function on_paint(gr) {
+	if (!window.IsTransparent) {
+		gr.FillSolidRect(0, 0, ww, wh, ui_backcol);
+		gr.FillGradRect(0, -22, ww, 75, 90, RGBA(63, 100, 127, 128), 0);
+	}
+
+	if (g_signs) {
+		gr.DrawImage(g_signs, Math.max(23, ww / 2 - 203), 10, 12, 10, 808, 13, 12, 10);
+		gr.DrawImage(g_signs, ww / 2 - 118, 10, 12, 10, 808, 26, 12, 10);
+		gr.DrawImage(g_signs, ww / 2 - 62, 10, 12, 10, 808, 39, 12, 10);
+		gr.DrawImage(g_signs, ww / 2 - 6, 10, 12, 10, 808, 52, 12, 10);
+		gr.DrawImage(g_signs, ww / 2 + 50, 10, 12, 10, 808, 78, 12, 10);
+		gr.DrawImage(g_signs, ww / 2 + 106, 10, 12, 10, 808, 91, 12, 10);
+		gr.DrawImage(g_signs, Math.min(ww - 35, ww / 2 + 191), 10, 12, 10, 808, 104, 12, 10);
+	}
+
+	gr.GdiDrawText("STOP A. C.", btn_font, ui_btntxtcol, Math.max(0, ww / 2 - 226), 38, 58, 8, 33);
+	gr.GdiDrawText("PB. ORDER", btn_font, ui_btntxtcol, Math.max(0, ww / 2 - 226), 75, 58, 8, 33);
+
+	cbtn1_b && gr.GdiDrawText(cbtn1_d, btn_font, ui_btntxtcol, ww / 2 - 141, 38, 58, 8, 33);
+	cbtn2_b && gr.GdiDrawText(cbtn2_d, btn_font, ui_btntxtcol, ww / 2 - 85, 38, 58, 8, 33);
+	cbtn3_b && gr.GdiDrawText(cbtn3_d, btn_font, ui_btntxtcol, ww / 2 - 29, 38, 58, 8, 33);
+	cbtn4_b && gr.GdiDrawText(cbtn4_d, btn_font, ui_btntxtcol, ww / 2 + 27, 38, 58, 8, 33);
+	cbtn5_b && gr.GdiDrawText(cbtn5_d, btn_font, ui_btntxtcol, ww / 2 + 83, 38, 58, 8, 33);
+	bbtn1_b && gr.GdiDrawText(bbtn1_d, btn_font, ui_btntxtcol, ww / 2 - 141, 75, 58, 8, 33);
+	bbtn2_b && gr.GdiDrawText(bbtn2_d, btn_font, ui_btntxtcol, ww / 2 - 85, 75, 58, 8, 33);
+	bbtn3_b && gr.GdiDrawText(bbtn3_d, btn_font, ui_btntxtcol, ww / 2 - 29, 75, 58, 8, 33);
+	bbtn4_b && gr.GdiDrawText(bbtn4_d, btn_font, ui_btntxtcol, ww / 2 + 27, 75, 58, 8, 33);
+	bbtn5_b && gr.GdiDrawText(bbtn5_d, btn_font, ui_btntxtcol, ww / 2 + 83, 75, 58, 8, 33);
+
+	buttonsDraw(gr);
+	volknob.draw(gr);
+}
+
+// ----- MOUSE ACTIONS -----
+var cur_btn = null;
+var btn_down;
+
+function on_mouse_move(x, y){
+	var btn = buttonsTraceMouse(x, y);
+
+	if (btn != cur_btn) {
+		cur_btn && cur_btn.onMouseOut();
+		btn && btn.onMouseIn();
+	}
+
+	cur_btn = btn;
+	volknob.on_mouse_move(x, y);
+}
+
+function on_mouse_lbtn_down(x, y){
+	g_down = true;
+	(btn_down = cur_btn) && cur_btn.changeState(ButtonStates.down);
+	volknob.on_mouse_lbtn_down(x, y);
+}
+
+function on_mouse_lbtn_up(x, y){
+	if (cur_btn) {
+		cur_btn.changeState(ButtonStates.hover);
+		btn_down == cur_btn && cur_btn.onClick(x, y);
+	}
+
+	g_down = false;
+	volknob.on_mouse_lbtn_up(x, y);
+}
+
+function on_mouse_wheel(step){
+	volknob.on_mouse_wheel(step);
+}
+
+function on_mouse_rbtn_up(x, y) {
+	if (volknob.traceMouse(x, y)) {
+		volknob.on_mouse_rbtn_up(x, y);
+		return true;
+	}
+}
+
+function on_mouse_leave() {
+	cur_btn && cur_btn.changeState(ButtonStates.normal);
+}
+
+// ----- EVENTS -----
+function on_size() {
+	ww = window.Width;
+	wh = window.Height;
+
+	Buttons.open.changePos(Math.max(0, ww / 2 - 226), 0, 58, 30);
+	Buttons.prev.changePos(ww / 2 - 141, 0, 58, 30);
+	Buttons.pause.changePos(ww / 2 - 85, 0, 58, 30);
+	Buttons.play.changePos(ww / 2 - 29, 0, 58, 30);
+	Buttons.stop.changePos(ww / 2 + 27, 0, 58, 30);
+	Buttons.next.changePos(ww / 2 + 83, 0, 58, 30);
+	Buttons.random.changePos(Math.min(ww - 58, ww / 2 + 168), 0, 58, 30);
+	Buttons.sac.changePos(Math.max(0, ww / 2 - 226), 53, 58, 14);
+	Buttons.pbo.changePos(Math.max(0, ww / 2 - 226), 90, 58, 14);
+
+	cbtn1_b && Buttons.center1.changePos(ww / 2 - 141, 53, 58, 14);
+	cbtn2_b && Buttons.center2.changePos(ww / 2 - 85, 53, 58, 14);
+	cbtn3_b && Buttons.center3.changePos(ww / 2 - 29, 53, 58, 14);
+	cbtn4_b && Buttons.center4.changePos(ww / 2 + 27, 53, 58, 14);
+	cbtn5_b && Buttons.center5.changePos(ww / 2 + 83, 53, 58, 14);
+	bbtn1_b && Buttons.bottom1.changePos(ww / 2 - 141, 90, 58, 14);
+	bbtn2_b && Buttons.bottom2.changePos(ww / 2 - 85, 90, 58, 14);
+	bbtn3_b && Buttons.bottom3.changePos(ww / 2 - 29, 90, 58, 14);
+	bbtn4_b && Buttons.bottom4.changePos(ww / 2 + 27, 90, 58, 14);
+	bbtn5_b && Buttons.bottom5.changePos(ww / 2 + 83, 90, 58, 14);
+
+	volknob.changePos(Math.min(ww - 59, ww / 2 + 167), 49, 60, 60);
+}
+
+var v_timer = null;
+
+function on_volume_change(val) {
+	if (v_timer) {
+		window.ClearTimeout(v_timer);
+		v_timer = null;
+	}
+
+	v_timer = window.SetTimeout(
+		function () {
+			volknob.Repaint();
+			window.ClearTimeout(v_timer);
+			v_timer = null;
+			v_change = false;
+		}, 3000);
+
+	v_change = true;
+	volknob.Repaint();
+}

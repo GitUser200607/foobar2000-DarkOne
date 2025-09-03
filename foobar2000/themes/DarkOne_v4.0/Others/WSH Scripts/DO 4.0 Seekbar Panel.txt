@@ -1,0 +1,126 @@
+﻿// ==PREPROCESSOR==
+// @name "DarkOne Seekbar Panel"
+// @version "4.0 build20130603"
+// @author "tedGo"
+// @import "%fb2k_path%themes\DarkOne_v4.0\Others\WSH Scripts\DO 4.0 Global Script.js"
+// ==/PREPROCESSOR==
+
+// ----- VARIABLES -----
+var g_tooltip = window.CreateTooltip();
+var g_trackingMouse = g_down = active = false;
+var g_drag_seek = 0;
+var g_oldX, g_oldY;
+
+// ----- CREATE HELPERS -----
+function TimeFmt(t) {
+	var zpad = function(n) {
+		var str = n.toString();
+		return str.length < 2 ? "0" + str : str;
+	}
+
+	var h = Math.floor(t / 3600);
+	t -= h * 3600;
+	var m = Math.floor(t / 60);
+	t -= m * 60;
+	var s = Math.floor(t);
+
+	if (h > 0) return h.toString() + "h" + zpad(m) + "m";
+
+	return m.toString() + ":" + zpad(s);
+}
+
+function drawLines(gr, area) {
+	var amount = Math.ceil(area / 2);
+	for (var i = 0; i < amount; i++) gr.FillSolidRect(i * 2, 0, 1, wh, RGB(63, 100, 127));
+}
+
+function calcDragSeek(x, y) {
+	g_drag_seek = (x - 0) / ww;
+	g_drag_seek = g_drag_seek < 0 ? 0 : g_drag_seek < 1 ? g_drag_seek : 1;
+}
+
+// ----- DRAW -----
+function on_paint(gr) {
+	if (!window.IsTransparent) gr.FillSolidRect(0, 0, ww, wh, ui_backcol);
+	var a, b, c;
+
+	if (active) {
+		a = g_down ? g_drag_seek : fb.PlaybackTime / fb.PlaybackLength;
+		b = ww * a;
+		c = b > 0 ? b : 0;
+	} else c = 0;
+
+	drawLines(gr, c);
+	fb.IsPlaying && gr.DrawLine(c - 1, 0, c - 1, wh, 2, RGB(191, 228, 255));
+}
+
+// ----- MOUSE ACTIONS -----
+function on_mouse_move(x, y) {
+	if (g_down && active) {
+		calcDragSeek(x, y);
+		if (!g_trackingMouse) {
+			g_tooltip.Activate();
+			g_tooltip.TrackActivate = true;
+			g_trackingMouse = true;
+		}
+
+		if (g_oldX != x || g_oldY != y) {
+			g_tooltip.Text = TimeFmt(fb.PlaybackLength * g_drag_seek);
+			g_tooltip.TrackPosition(x + 10, y + 20);
+			g_oldX = x;
+			g_oldY = y;
+		}
+
+		window.Repaint();
+	}
+}
+
+function on_mouse_lbtn_down(x, y) {
+	if (active) {
+		g_down = true;
+		calcDragSeek(x, y);
+		window.Repaint();
+	}
+}
+
+function on_mouse_lbtn_up(x, y) {
+	if (g_down && active) {
+		calcDragSeek(x, y);
+		fb.PlaybackTime = fb.PlaybackLength * g_drag_seek;
+	}
+	g_down = false;
+}
+
+function on_mouse_wheel(step) {
+	if (active) fb.PlaybackTime += step;
+}
+
+function on_mouse_leave() {
+	g_trackingMouse = false;
+	g_tooltip.TrackActivate = false;
+	g_down = false;
+}
+
+// ----- EVENTS -----
+function on_size() {
+	ww = window.Width;
+	wh = window.Height;
+}
+
+function on_playback_seek(time) {
+	window.Repaint();
+}
+
+function on_playback_time(time) {
+	window.Repaint();
+}
+
+function on_playback_new_track(metadb) {
+	if (metadb) active = fb.PlaybackLength <= 0 || metadb.RawPath.indexOf("FOO_LASTFM") == 0 ? false : true;
+	window.Repaint();
+}
+
+function on_playback_stop(reason) {
+	if (reason != 2) active = false;
+	window.Repaint();
+}

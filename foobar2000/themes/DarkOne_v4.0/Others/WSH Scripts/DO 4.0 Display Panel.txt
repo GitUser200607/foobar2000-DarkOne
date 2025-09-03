@@ -1,0 +1,533 @@
+﻿// ==PREPROCESSOR==
+// @name "DarkOne Display Panel"
+// @version "4.0 build20130603"
+// @author "super-gau and tedGo, includes partial codes by fbuser, Br3tt and T.P Wang"
+// @import "%fb2k_path%themes\DarkOne_v4.0\Others\WSH Scripts\DO 4.0 Global Script.js"
+// ==/PREPROCESSOR==
+
+// ----- VARIABLES -----
+var g_timer = v_timer = g_alpha = s_alpha = p_alpha = null;
+var g_interval, fileinfo, g_trackinfo;
+var v_change = g_active = false;
+
+var t_rem = window.GetProperty("Remain Time on", false);
+
+// ----- COLOURS -----
+var d_arr = new Array("Default", "Blue", "Green", "Red", "White", "Yellow");
+var c_arr = new Array(RGB(191, 228, 255), RGB(128, 192, 255), RGB(0, 255, 0), RGB(255, 0, 0), RGB(255, 255, 255), RGB(255, 255, 0));
+
+function InitColours() {
+	d_col = window.GetProperty("Display Colour", 0);
+	g_dcol = d_arr[d_col];
+	g_acol = c_arr[d_col];
+	g_fact = g_acol == -65536 ? 0.09 : 0.03;
+	g_bcol = combColours(ui_backcol, g_acol, g_fact);
+}
+
+InitColours();
+
+// ----- CREATE HELPERS -----
+String.prototype.repeat = function(n) {
+	return (new Array(n + 1)).join(this);
+}
+
+function pad(x, y, z) {
+	z || (z = ' ');
+	return x.length < y ? x + z.repeat(y - x.length) : x;
+}
+
+function pad_right(x, y, z) {
+	z || (z = ' ');
+	return x.length < y ? z.repeat(y - x.length) + x : x
+}
+
+function TimeFmt(t) {
+	var zpad = function(n) {
+		var str = n.toString();
+		return str.length < 2 ? "0" + str : str;
+	}
+
+	var h = Math.floor(t / 3600);
+	t -= h * 3600;
+	var m = Math.floor(t / 60);
+	t -= m * 60;
+	var s = Math.floor(t);
+
+	return zpad(h) + ":" + zpad(m) + ":" + zpad(s);
+}
+
+function drawSquares(gr, squareSize, paddingSize, x, y, w, h) {
+	var stepSize = squareSize + paddingSize;
+	var totalsq = Math.ceil(w / stepSize);
+	var totalrow = Math.ceil(h / stepSize);
+
+	for(var j = 0; j < totalrow; j++) {
+		for(var i = 0; i < totalsq; i++) {
+			gr.FillSolidRect(i * stepSize + x, j * stepSize + y, squareSize, squareSize, g_bcol);
+		}
+	}
+}
+
+// ----- CREATE INFO -----
+Info.prototype.setColours = function() {
+	var metadb = fb.GetNowPlaying();
+
+	if (metadb) {
+		fileinfo = metadb.GetFileInfo();
+		this.Colours[0] = fileinfo.InfoValue(fileinfo.InfoFind("encoding")) == "lossless" ? g_acol : g_bcol;
+		this.Colours[1] = fileinfo.InfoValue(fileinfo.InfoFind("encoding")) == "lossless" ? g_bcol : g_acol;
+		this.Colours[2] = fileinfo.InfoValue(fileinfo.InfoFind("md5")) ? g_acol : g_bcol;
+		this.Colours[3] = fb.TitleFormat("[%replaygain_track_gain%]").Eval() ? g_acol : g_bcol;
+		this.Colours[4] = fileinfo.MetaValue(fileinfo.MetaFind("tracknumber"), 0) ? ui_btntxtcol : g_bcol;
+		this.Colours[5] = fileinfo.MetaValue(fileinfo.MetaFind("totaltracks"), 0) ? ui_btntxtcol : g_bcol;
+		this.Colours[6] = ui_btntxtcol;
+	} else for (var i = 0; i < this.Colours.length; i++) this.Colours[i] = g_bcol;
+}
+
+Info.prototype.setTrackNo = function() {
+	var metadb = fb.GetNowPlaying();
+	var a, b, c, d;
+
+	if (metadb) {
+		a = fb.TitleFormat("[$num(%tracknumber%,2)]").Eval();
+		b = fb.TitleFormat("[$num(%totaltracks%,2)]").Eval();
+		c = pad(a, 3);
+		d = pad(b, 3);
+		this.TrackNo = c;
+		this.TotalNo = d;
+		g_trackinfo = !g_active ? 2 : metadb.RawPath.indexOf("FOO_LASTFM") == 0 ? 1 : 0;
+	} else {
+		this.TrackNo = "";
+		this.TotalNo = "";
+	}
+}
+
+Info.prototype.setPBTime = function() {
+	this.Elapse = TimeFmt(fb.PlaybackTime);
+	this.Remain = g_active ? TimeFmt(fb.PlaybackLength - fb.PlaybackTime) : "";
+}
+
+Info.prototype.setBitrate = function() {
+	this.Bitrate = pad_right(fb.TitleFormat("$num(%bitrate%,0)").Eval(), 4);
+}
+
+Info.prototype.setInfo = function() {
+	this.setColours();
+	this.setTrackNo();
+	this.setPBTime();
+	this.setBitrate();
+}
+
+function Info() {
+	this.Colours = new Array(7);
+	this.setInfo();
+}
+
+info = new Info();
+
+// ----- BASE IMAGE OBJECT -----
+function BaseImage() {
+	this.image = null;
+	this.curVal  = "";
+
+	this.reset = function() {
+		this.curVal  = "";
+	}
+
+	this.dispose = function() {
+		this.image && this.image.Dispose();
+	}
+
+	this.isDrawDigit = function(digitValue, index) {
+		return (this.curVal == null || this.curVal == "" || digitValue != this.curVal.charAt(index));
+	}
+}
+
+// ----- CREATE TRACKNUMBER IMAGE -----
+function NumImage() {
+	this.image = gdi.CreateImage(54, 20);
+
+	this.init = function(curNo) {
+		gr = this.image.GetGraphics();
+
+		this.drawDigit(curNo, 0);
+		this.drawDigit(curNo, 1);
+		this.drawDigit(curNo, 2);
+
+		this.curVal = curNo;
+
+		this.image.ReleaseGraphics(gr);
+	}
+
+	this.draw = function(curNo) {
+		this.init(curNo);
+	}
+
+	this.drawDigit = function(curNo, index) {
+		var digitValue = curNo.charAt(index);
+
+		if (this.isDrawDigit(digitValue, index)) {
+			var xoffset = index * 18;
+			gr.FillSolidRect(xoffset, 0, 18, 20, ui_backcol);
+			drawSquares(gr, 2, 1, xoffset, 0, 18, 20);
+			g_signs && gr.DrawImage(g_signs, xoffset, 0, 18, 20, digitValue == " " ? 216 : digitValue * 18, d_col * 22, 18, 20);
+		}
+	}
+}
+
+NumImage.prototype = new BaseImage();
+var g_trackNoImage = new NumImage();
+var g_totalNoImage = new NumImage();
+
+// ----- CREATE TIME IMAGE -----
+function TimeImage() {
+	this.image = gdi.CreateImage(120, 20);
+
+	this.init = function(time) {
+		gr = this.image.GetGraphics();
+
+		this.drawDigit(time, 0, 0);
+		this.drawDigit(time, 1, 0);
+
+		g_signs && gr.DrawImage(g_signs, 36, 0, 6, 20, 234, d_col * 22, 6, 20);
+
+		this.drawDigit(time, 3, -12);
+		this.drawDigit(time, 4, -12);
+
+		g_signs && gr.DrawImage(g_signs, 78, 0, 6, 20, 234, d_col * 22, 6, 20);
+
+		this.drawDigit(time, 6, -24);
+		this.drawDigit(time, 7, -24);
+
+		this.curVal = time;
+
+		this.image.ReleaseGraphics(gr);
+	}
+
+	this.draw = function(time) {
+		if (this.curVal == "") this.init(time);
+		else {
+			gr = this.image.GetGraphics();
+
+			this.drawDigit(time, 0, 0);
+			this.drawDigit(time, 1, 0);
+
+			this.drawDigit(time, 3, -12);
+			this.drawDigit(time, 4, -12);
+
+			this.drawDigit(time, 6, -24);
+			this.drawDigit(time, 7, -24);
+
+			this.curVal = time;
+
+			this.image.ReleaseGraphics(gr);
+		}
+	}
+
+	this.drawDigit = function(time, index, offset) {
+		var digitValue = time.charAt(index);
+
+		if (this.isDrawDigit(digitValue, index)) {
+			var xoffset = index * 18 + offset;
+			gr.FillSolidRect(xoffset, 0, 18, 20, ui_backcol);
+			drawSquares(gr, 2, 1, xoffset, 0, 18, 20);
+			g_signs && gr.DrawImage(g_signs, xoffset, 0, 18, 20, isNaN(digitValue) ? 0 : digitValue * 18, d_col * 22, 18, 20);
+		}
+	}
+}
+
+TimeImage.prototype = new BaseImage();
+var g_timeImage = new TimeImage();
+
+// ----- CREATE BITRATE IMAGE -----
+function BitrateImage() {
+	this.image = gdi.CreateImage(72, 20);
+
+	this.init = function(bitrate) {
+		gr = this.image.GetGraphics();
+
+		this.drawDigit(bitrate, 0);
+		this.drawDigit(bitrate, 1);
+		this.drawDigit(bitrate, 2);
+		this.drawDigit(bitrate, 3);
+
+		this.curVal = bitrate;
+
+		this.image.ReleaseGraphics(gr);
+	}
+
+	this.draw = function(bitrate) {
+		this.init(bitrate);
+	}
+
+	this.drawDigit = function(bitrate, index) {
+		var digitValue = bitrate.charAt(index);
+
+		if (this.isDrawDigit(digitValue, index)) {
+			var xoffset = index * 18;
+			gr.FillSolidRect(xoffset, 0, 18, 20, ui_backcol);
+			drawSquares(gr, 2, 1, xoffset, 0, 18, 20);
+			g_signs && gr.DrawImage(g_signs, xoffset, 0, 18, 20, digitValue == " " ? 216 : digitValue * 18, d_col * 22, 18, 20);
+		}
+	}
+}
+
+BitrateImage.prototype = new BaseImage();
+var g_bitrateImage = new BitrateImage();
+
+// ----- CREATE VOLUME IMAGE -----
+function VolumeImage() {
+	this.image = gdi.CreateImage(168, 20);
+
+	this.init = function(volume) {
+		gr = this.image.GetGraphics();
+
+		this.drawDigit(volume, 0, 0);
+		this.drawDigit(volume, 1, 0);
+		this.drawDigit(volume, 2, 0);
+		this.drawDigit(volume, 3, 0);
+
+		g_signs && gr.DrawImage(g_signs, 72, 0, 6, 20, 240, d_col * 22, 6, 20);
+
+		this.drawDigit(volume, 5, -12);
+		this.drawDigit(volume, 6, -12);
+
+		g_signs && gr.DrawImage(g_signs, 114, 0, 18, 20, 216, d_col * 22, 18, 20);
+		g_signs && gr.DrawImage(g_signs, 132, 0, 36, 20, 264, d_col * 22, 36, 20);
+
+		this.curVal = volume;
+
+		this.image.ReleaseGraphics(gr);
+	}
+
+	this.draw = function(volume) {
+		if (this.curVal == "") this.init(volume);
+		else {
+			gr = this.image.GetGraphics();
+
+			this.drawDigit(volume, 0, 0);
+			this.drawDigit(volume, 1, 0);
+			this.drawDigit(volume, 2, 0);
+			this.drawDigit(volume, 3, 0);
+
+			this.drawDigit(volume, 5, -12);
+			this.drawDigit(volume, 6, -12);
+
+			this.curVal = volume;
+
+			this.image.ReleaseGraphics(gr);
+		}
+	}
+
+	this.drawDigit = function(volume, index, offset) {
+		var digitValue = volume.charAt(index);
+
+		if (this.isDrawDigit(digitValue, index)) {
+			var xoffset = index * 18 + offset;
+			gr.FillSolidRect(xoffset, 0, 18, 20, ui_backcol);
+			drawSquares(gr, 2, 1, xoffset, 0, 18, 20);
+			g_signs && gr.DrawImage(g_signs, xoffset, 0, 18, 20, digitValue == " " ? 216 : digitValue == "-" ? 246 : digitValue * 18, d_col * 22, 18, 20);
+		}
+	}
+}
+
+VolumeImage.prototype = new BaseImage();
+var g_volumeImage = new VolumeImage();
+
+// ----- CREATE MENU -----
+function CustomMenu(x, y) {
+	var a = window.CreatePopupMenu();
+	var idx;
+
+	for (var i = 0; i < d_arr.length; i++) {
+		a.AppendMenuItem(0, 1 + i, d_arr[i]);
+	}
+	a.CheckMenuRadioItem(1, 6, d_col + 1);
+
+	a.AppendMenuSeparator();
+	a.AppendMenuItem(0, 7, "Properties");
+	a.AppendMenuItem(0, 8, "Configure...");
+
+	idx = a.TrackPopupMenu(x, y);
+
+	switch (true) {
+		case (idx >= 1 && idx <= 6):
+			window.SetProperty("Display Colour", idx - 1);
+			InitColours();
+			info.setColours();
+			g_trackNoImage.reset();
+			g_totalNoImage.reset();
+			g_timeImage.reset();
+			g_bitrateImage.reset();
+			g_volumeImage.reset();
+			window.Repaint();
+			break;
+
+		case (idx == 7):
+			window.ShowProperties();
+			break;
+
+		case (idx == 8):
+			window.ShowConfigure();
+			break;
+	}
+
+	a.Dispose();
+}
+
+// ----- DRAW -----
+function on_paint(gr) {
+	!window.IsTransparent && gr.FillSolidRect(0, 0, ww, wh, ui_backcol);
+	drawSquares(gr, 2, 1, 0, 30, ww - 26, 20);
+
+	gr.DrawRect(1, 0, ww * 17 / 70, 10, 1, info.Colours[0]);
+	gr.DrawRect(ww * 71 / 280, 0, ww * 17 / 70, 10, 1, info.Colours[1]);
+	gr.DrawRect(ww * 141 / 280, 0, ww * 17 / 70, 10, 1, info.Colours[2]);
+	gr.DrawRect(ww * 211 / 280, 0, ww * 17 / 70, 10, 1, info.Colours[3]);
+
+	gr.GdiDrawText("LOSSLESS", btn_font, info.Colours[0], ww / 8 - 33, 0, 70, 10, 37);
+	gr.GdiDrawText("LOSSY", btn_font, info.Colours[1], ww / 8 * 3 - 34, 0, 70, 10, 37);
+	gr.GdiDrawText("AUDIO MD5", btn_font, info.Colours[2], ww / 8 * 5 - 34, 0, 70, 10, 37);
+	gr.GdiDrawText("REPLAYGAIN", btn_font, info.Colours[3], ww - ww / 8 - 33, 0, 70, 10, 37);
+
+	gr.GdiDrawText("TRACK", btn_font, info.Colours[4], 0, 18, 27, 10, 37);
+	gr.GdiDrawText("TOTAL", btn_font, info.Colours[5], 60, 18, 27, 10, 37);
+	gr.GdiDrawText("ELAPSED", btn_font, v_change || t_rem ? g_bcol : info.Colours[6], ww / 2 - 38, 18, 35, 10, 38);
+	gr.GdiDrawText("TIME", btn_font, v_change ? g_bcol : info.Colours[6], ww / 2 + 5, 18, 20, 10, 38);
+	gr.GdiDrawText("REMAINING", btn_font, v_change || !t_rem ? g_bcol : info.Colours[6], ww / 2 + 33, 18, 46, 10, 38);
+	gr.GdiDrawText("VOLUME", btn_font, v_change ? ui_btntxtcol : g_bcol, ww - 88, 18, 34, 10, 37);
+	gr.GdiDrawText("KBPS", btn_font, v_change ? g_bcol : info.Colours[6], ww - 46, 18, 20, 10, 37);
+
+	if (fb.IsPlaying) {
+		if (g_trackinfo == 0) {
+			g_trackNoImage.draw(info.TrackNo);
+			gr.DrawImage(g_trackNoImage.image, 0, 30, 54, 20, 0, 0, 54, 20);
+
+			g_totalNoImage.draw(info.TotalNo);
+			gr.DrawImage(g_totalNoImage.image, 60, 30, 54, 20, 0, 0, 54, 20);
+		} else {
+			var noTrack = g_trackinfo == 1 ? 534 : 420;
+			g_signs && gr.DrawImage(g_signs, 0, 30, 114, 20, noTrack, d_col * 22, 114, 20);
+		}
+
+		g_signs && gr.DrawImage(g_signs, ww / 2 - 63, 30, 18, 20, fb.IsPaused ? 197 : 179, d_col * 22, 18, 20);
+	}
+
+	if (v_change) {
+		var vol = fb.Volume.toFixed(2) + " db";
+		g_volumeImage.draw(pad_right(vol, 10));
+		gr.DrawImage(g_volumeImage.image, ww - 191, 30, 165, 20, 0, 0, 165, 20);
+	} else {
+		if (fb.IsPlaying) {
+			var t_play = t_rem && !g_active ? false : true;
+			var t_fmt = t_rem ? info.Remain : info.Elapse;
+			t_play && g_timeImage.draw(t_fmt);
+			t_play && gr.DrawImage(g_timeImage.image, ww / 2 - 38, 30, 120, 20, 0, 0, 120, 20);
+			!t_play && g_signs && gr.DrawImage(g_signs, ww / 2 - 38, 30, 120, 20, 300, d_col * 22, 120, 20);
+
+			g_bitrateImage.draw(info.Bitrate);
+			gr.DrawImage(g_bitrateImage.image, ww - 94, 30, 69, 20, 0, 0, 69, 20);
+		}
+	}
+
+	g_alpha = g_fact == 0.09 ? 20 : 7;
+	s_alpha = fb.StopAfterCurrent ? 255 : g_alpha;
+	g_signs && gr.DrawImage(g_signs, ww - 18, 21, 18, 12, 648, d_col * 22, 18, 12, 0, s_alpha);
+
+	p_alpha = fb.IsPlaying ? 255 : g_alpha;
+	g_signs && gr.DrawImage(g_signs, ww - 18, 38, 18, 12, 668 + fb.PlaybackOrder * 20, d_col * 22, 18, 12, 0, p_alpha);
+
+	!window.IsTransparent && gr.FillGradRect(0, -25, ww, 75, 90, RGBA(63, 100, 127, 128), 0);
+}
+
+// ----- MOUSE ACTIONS -----
+function on_mouse_rbtn_up(x, y) {
+	CustomMenu(x, y);
+	return true;
+}
+
+// ----- EVENTS -----
+function on_size() {
+	ww = window.Width;
+	wh = window.Height;
+}
+
+function on_volume_change(val) {
+	if (v_timer) {
+		window.ClearTimeout(v_timer);
+		v_timer = null;
+	}
+
+	v_timer = window.SetTimeout(
+		function () {
+			window.RepaintRect(ww / 2 - 38, 18, ww - (ww / 2 - 12), 32);
+			window.ClearTimeout(v_timer);
+			v_timer = null;
+			v_change = false;
+		}, 3000);
+
+	v_change = true;
+	window.RepaintRect(ww / 2 - 38, 18, ww - (ww / 2 - 12), 32);
+}
+
+function on_playback_order_changed(new_order) {
+	window.RepaintRect(ww - 18, 38, 18, 12);
+}
+
+function on_playback_time(time) {
+	info.setPBTime();
+	window.RepaintRect(ww / 2 - 38, 30, 120, 20);
+}
+
+function on_playback_dynamic_info() {
+	info.setBitrate()
+	window.RepaintRect(ww - 94, 30, 69, 20);
+}
+
+function on_playback_edited() {
+	info.setInfo();
+	window.Repaint();
+}
+
+function on_playback_new_track(metadb) {
+	if (metadb) g_active = fb.PlaybackLength <= 0 ? false : true;
+	info.setInfo();
+	window.Repaint();
+}
+
+function on_playback_pause(state) {
+	window.RepaintRect(ww / 2 - 62, 30, 18, 20);
+}
+
+function on_playback_stop(reason) {
+	if (fileinfo) fileinfo.Dispose();
+
+	if (reason != 2) {
+		g_active = false;
+		info.setInfo();
+		fb.RunMainMenuCommand("ELPlaylist/Redraw");
+	}
+
+	window.Repaint();
+}
+
+function on_playlist_stop_after_current_changed(state) {
+	window.RepaintRect(ww - 18, 21, 18, 12);
+}
+
+function on_notify_data(name, info) {
+	if (name == "remTime") {
+		window.SetProperty("Remain Time on", info == true ? true : false);
+		t_rem = window.GetProperty("Remain Time on");
+		window.RepaintRect(ww / 2 - 38, 18, 120, 38);
+	}
+}
+
+function on_script_unload() {
+	g_trackNoImage && g_trackNoImage.dispose();
+	g_totalNoImage && g_totalNoImage.dispose();
+	g_timeImage && g_timeImage.dispose();
+	g_bitrateImage && g_bitrateImage.dispose();
+	g_volumeImage && g_volumeImage.dispose();
+	g_signs && g_signs.Dispose();
+}
