@@ -1,0 +1,498 @@
+﻿Illegal operation:
+Code: C0000005h, flags: 00000000h, address: 00490184h
+Access violation, operation: write, address: 00490184h
+
+Call path:
+user_interface::init=>read config=>insert ext=>read config=>insert ext=>read config=>insert ext=>read config=>insert ext=>read config=>insert ext
+
+Code bytes (00490184h):
+00490144h:  90 BB 1B 00 60 BA 1B 00 70 BA 1B 00 D0 BB 1B 00
+00490154h:  F0 BB 1B 00 A0 CF 1B 00 D8 AA 73 38 32 B1 8B 47
+00490164h:  A8 2D 53 19 35 44 C6 06 5B 69 6E 76 61 6C 69 64
+00490174h:  20 6C 6F 63 61 74 69 6F 6E 5D 00 00 0A 00 00 00
+00490184h:  C0 44 3F 00 E0 E7 1B 00 70 45 3F 00 10 46 3F 00
+00490194h:  90 E8 1B 00 50 46 3F 00 80 46 3F 00 00 00 00 00
+004901A4h:  46 65 61 74 75 72 65 20 6E 6F 74 20 69 6D 70 6C
+004901B4h:  65 6D 65 6E 74 65 64 00 C0 E2 1B 00 A0 ED 1B 00
+
+Stack (0093CC3Ch):
+0093CC1Ch:  0093CC7C 00CFCC68 00D068D8 00D068D8
+0093CC2Ch:  002143BF 0093CC64 03154584 0093CC6C
+0093CC3Ch:  0020D116 0093CC4C 0048EFE0 00D068F0
+0093CC4Ch:  00000000 0093CC9C 0044868D 00000000
+0093CC5Ch:  0093CC8C 00211FB1 0501F77C 0314726A
+0093CC6Ch:  0501F77C 00D068F0 00000000 0501F730
+0093CC7Ch:  0501F758 0093CC9C 0314EA7D 00000000
+0093CC8Ch:  0093CCA8 031145D9 0501F734 0501F758
+0093CC9Ch:  0093CCC0 0314E8F3 00000003 0093CCCC
+0093CCACh:  0311A684 0093CD1C 00000021 0501F734
+0093CCBCh:  0501F730 0093CCF8 0314F14A 00000001
+0093CCCCh:  00CFCB48 00211FB1 0093CCF4 032D2FAB
+0093CCDCh:  0093CCF4 00CFCB48 00000020 3DC9DD06
+0093CCECh:  00000021 0093CF0C 00000000 0093CD20
+0093CCFCh:  032DDEB5 00000000 032A359F 00CFCB48
+0093CD0Ch:  3DC9DCFA 00000010 00000000 0093CD80
+0093CD1Ch:  0515F418 0093CD74 032DF6B8 00000000
+0093CD2Ch:  032D5490 0093CD6C 3DC9DC6A 00000000
+0093CD3Ch:  032E5FA8 0093D8B0 00000004 0093D8B0
+0093CD4Ch:  0093D8B0 0093CDB0 032A30FD 0093CDAC
+
+Registers:
+EAX: 00490184, EBX: 0093CF0C, ECX: 00C585E8, EDX: 0093CC4C
+ESI: 00D068F0, EDI: 0501F77C, EBP: 0093CC5C, ESP: 0093CC3C
+
+Timestamp:
+219ms
+
+Crash location:
+Module: foobar2000
+Offset: 2E0184h
+
+Loaded modules:
+foobar2000                       loaded at 001B0000h - 00596000h
+ntdll                            loaded at 772B0000h - 7746F000h
+KERNEL32                         loaded at 76C10000h - 76D00000h
+KERNELBASE                       loaded at 75410000h - 756EA000h
+SHLWAPI                          loaded at 74D70000h - 74DC2000h
+sqlite3                          loaded at 71290000h - 71380000h
+COMCTL32                         loaded at 71470000h - 71697000h
+ucrtbase                         loaded at 76AC0000h - 76BD0000h
+WINMM                            loaded at 74B70000h - 74BA3000h
+msvcrt                           loaded at 765B0000h - 76677000h
+WS2_32                           loaded at 767C0000h - 7682A000h
+GDI32                            loaded at 76BE0000h - 76C02000h
+RPCRT4                           loaded at 75310000h - 753CC000h
+win32u                           loaded at 753E0000h - 753FC000h
+gdi32full                        loaded at 770D0000h - 771BA000h
+USER32                           loaded at 75DF0000h - 75FD7000h
+msvcp_win                        loaded at 766F0000h - 76775000h
+ADVAPI32                         loaded at 76520000h - 765A5000h
+UxTheme                          loaded at 74370000h - 743EE000h
+sechost                          loaded at 756F0000h - 75775000h
+combase                          loaded at 76D10000h - 76FA3000h
+SHELL32                          loaded at 75780000h - 75DE5000h
+VCRUNTIME140                     loaded at 719F0000h - 71A05000h
+ole32                            loaded at 76830000h - 76987000h
+OLEAUT32                         loaded at 74DF0000h - 74E8F000h
+CRYPT32                          loaded at 76FB0000h - 770BE000h
+zlib1                            loaded at 719D0000h - 719E9000h
+shared                           loaded at 71260000h - 71282000h
+MSVCP140                         loaded at 711F0000h - 7125D000h
+MSVCP140_ATOMIC_WAIT             loaded at 711D0000h - 711E2000h
+MSIMG32                          loaded at 74490000h - 74496000h
+imagehlp                         loaded at 74DD0000h - 74DEB000h
+OLEACC                           loaded at 74BB0000h - 74C09000h
+COMDLG32                         loaded at 75020000h - 750D9000h
+DNSAPI                           loaded at 72DA0000h - 72EAD000h
+AVRT                             loaded at 719C0000h - 719C9000h
+WINHTTP                          loaded at 72570000h - 72656000h
+shcore                           loaded at 75FE0000h - 760B6000h
+gdiplus                          loaded at 741E0000h - 7435E000h
+Secur32                          loaded at 711C0000h - 711CA000h
+DSPARSE                          loaded at 72D90000h - 72D9A000h
+dbghelp                          loaded at 70DD0000h - 70FB8000h
+dbgcore                          loaded at 71180000h - 711B0000h
+SSPICLI                          loaded at 74100000h - 7412B000h
+IMM32                            loaded at 76790000h - 767B5000h
+IPHLPAPI                         loaded at 744A0000h - 744C6000h
+NSI                              loaded at 76AB0000h - 76AB7000h
+kernel.appcore                   loaded at 749E0000h - 749F5000h
+bcryptPrimitives                 loaded at 74F10000h - 74F8A000h
+jklx86                           loaded at 70FE0000h - 70FEF000h
+MSCTF                            loaded at 76990000h - 76AA7000h
+foo_out_upnp                     loaded at 71050000h - 7117B000h
+foo_uie_lyrics3                  loaded at 10000000h - 1008D000h
+WININET                          loaded at 74670000h - 74893000h
+foo_dsp_eq                       loaded at 71000000h - 71048000h
+foo_uie_biography                loaded at 70D70000h - 70DC8000h
+foo_uie_albumlist                loaded at 70BF0000h - 70D6D000h
+USP10                            loaded at 70AC0000h - 70AD7000h
+dwmapi                           loaded at 708A0000h - 708C6000h
+dxgi                             loaded at 70AE0000h - 70BE8000h
+d3d11                            loaded at 708D0000h - 70ABB000h
+powrprof                         loaded at 74B10000h - 74B65000h
+d2d1                             loaded at 70380000h - 70894000h
+DWrite                           loaded at 70160000h - 70376000h
+UMPDC                            loaded at 74A00000h - 74A0F000h
+foo_wave_seekbar                 loaded at 6FFB0000h - 70159000h
+PSAPI                            loaded at 77290000h - 77296000h
+MSVCP120                         loaded at 6FF30000h - 6FFA1000h
+MSVCR120                         loaded at 6FE40000h - 6FF2E000h
+mswsock                          loaded at 71FE0000h - 72034000h
+foo_ui_std                       loaded at 6FC80000h - 6FE3E000h
+foo_ui_columns                   loaded at 6F430000h - 6FC7F000h
+urlmon                           loaded at 71CA0000h - 71E37000h
+mscms                            loaded at 6F380000h - 6F41F000h
+iertutil                         loaded at 71A50000h - 71C8D000h
+windows.storage                  loaded at 735F0000h - 73D09000h
+srvcli                           loaded at 71A20000h - 71A3E000h
+WindowsCodecs                    loaded at 6F190000h - 6F36F000h
+netutils                         loaded at 745B0000h - 745BB000h
+foo_uie_wsh_panel_mod            loaded at 6F0A0000h - 6F18C000h
+foo_input_std                    loaded at 6EEC0000h - 6F0A0000h
+avcodec-fb2k-62                  loaded at 6ECE0000h - 6EEB2000h
+avformat-fb2k-62                 loaded at 6EA50000h - 6EA9B000h
+MSACM32                          loaded at 6EAA0000h - 6EABA000h
+avutil-fb2k-60                   loaded at 6EAC0000h - 6ECD7000h
+bcrypt                           loaded at 72710000h - 7272C000h
+foo_uie_elplaylist               loaded at 6E9D0000h - 6EA43000h
+foo_uie_vis_peakmeter_spectrum   loaded at 03070000h - 030AF000h
+foo_quicksearch                  loaded at 03110000h - 03178000h
+foo_dsp_std                      loaded at 6E970000h - 6E9C1000h
+foo_fileops                      loaded at 6E900000h - 6E965000h
+foo_w7shell                      loaded at 031B0000h - 031ED000h
+foo_unpack                       loaded at 6E860000h - 6E8F4000h
+foo_freedb2                      loaded at 6E820000h - 6E860000h
+foo_uie_esplaylist               loaded at 6E7B0000h - 6E81A000h
+foo_converter                    loaded at 6E6F0000h - 6E7A5000h
+foo_uie_panel_splitter           loaded at 032A0000h - 032F9000h
+foo_uie_vis_channel_spectrum     loaded at 03330000h - 0336D000h
+foo_playcount                    loaded at 6E6B0000h - 6E6EA000h
+foo_midi                         loaded at 6E2E0000h - 6E6B0000h
+bass                             loaded at 6E290000h - 6E2DD000h
+bassmidi                         loaded at 6E200000h - 6E284000h
+frontend_direct2d                loaded at 6E1B0000h - 6E1F1000h
+frontend_direct3d9               loaded at 6E160000h - 6E1B0000h
+d3dx9_42                         loaded at 6DDF0000h - 6DFD5000h
+d3d9                             loaded at 6DFE0000h - 6E15A000h
+VERSION                          loaded at 748A0000h - 748A8000h
+dxcore                           loaded at 6DDB0000h - 6DDE7000h
+SciLexer                         loaded at 6DD00000h - 6DDA2000h
+clbcatq                          loaded at 74F90000h - 75016000h
+Windows.UI                       loaded at 6DBE0000h - 6DCF1000h
+Windows.UI.Immersive             loaded at 6DAC0000h - 6DBD9000h
+twinapi.appcore                  loaded at 6D8C0000h - 6DAB1000h
+WinTypes                         loaded at 71E40000h - 71F39000h
+profapi                          loaded at 72660000h - 7267E000h
+dataexchange                     loaded at 6D860000h - 6D8AC000h
+sxs                              loaded at 6D7D0000h - 6D855000h
+
+Stack dump analysis:
+Address: 0020D116h (foobar2000+5D116h)
+Address: 0048EFE0h (foobar2000+2DEFE0h)
+Address: 0044868Dh (foobar2000+29868Dh)
+Address: 00211FB1h (foobar2000+61FB1h)
+Address: 0314726Ah (foo_quicksearch+3726Ah), symbol: "foobar2000_get_interface" (+C9Ah)
+Address: 0314EA7Dh (foo_quicksearch+3EA7Dh), symbol: "foobar2000_get_interface" (+84ADh)
+Address: 031145D9h (foo_quicksearch+45D9h)
+Address: 0314E8F3h (foo_quicksearch+3E8F3h), symbol: "foobar2000_get_interface" (+8323h)
+Address: 0311A684h (foo_quicksearch+A684h)
+Address: 0314F14Ah (foo_quicksearch+3F14Ah), symbol: "foobar2000_get_interface" (+8B7Ah)
+Address: 00211FB1h (foobar2000+61FB1h)
+Address: 032D2FABh (foo_uie_panel_splitter+32FABh), symbol: "foobar2000_get_interface" (+2019Bh)
+Address: 032DDEB5h (foo_uie_panel_splitter+3DEB5h), symbol: "foobar2000_get_interface" (+2B0A5h)
+Address: 032A359Fh (foo_uie_panel_splitter+359Fh)
+Address: 032DF6B8h (foo_uie_panel_splitter+3F6B8h), symbol: "foobar2000_get_interface" (+2C8A8h)
+Address: 032D5490h (foo_uie_panel_splitter+35490h), symbol: "foobar2000_get_interface" (+22680h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032A30FDh (foo_uie_panel_splitter+30FDh)
+Address: 71267376h (shared+7376h), symbol: "uCallStackTracker::uCallStackTracker" (+D6h)
+Address: 032DE2E5h (foo_uie_panel_splitter+3E2E5h), symbol: "foobar2000_get_interface" (+2B4D5h)
+Address: 032D5955h (foo_uie_panel_splitter+35955h), symbol: "foobar2000_get_interface" (+22B45h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E6AA4h (foo_uie_panel_splitter+46AA4h), symbol: "foobar2000_get_interface" (+33C94h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 772EEEDAh (ntdll+3EEDAh), symbol: "RtlFreeHeap" (+CAh)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 71267376h (shared+7376h), symbol: "uCallStackTracker::uCallStackTracker" (+D6h)
+Address: 032DE42Ch (foo_uie_panel_splitter+3E42Ch), symbol: "foobar2000_get_interface" (+2B61Ch)
+Address: 032D6157h (foo_uie_panel_splitter+36157h), symbol: "foobar2000_get_interface" (+23347h)
+Address: 032DE688h (foo_uie_panel_splitter+3E688h), symbol: "foobar2000_get_interface" (+2B878h)
+Address: 032D54BCh (foo_uie_panel_splitter+354BCh), symbol: "foobar2000_get_interface" (+226ACh)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032A30FDh (foo_uie_panel_splitter+30FDh)
+Address: 71267376h (shared+7376h), symbol: "uCallStackTracker::uCallStackTracker" (+D6h)
+Address: 032DE2E5h (foo_uie_panel_splitter+3E2E5h), symbol: "foobar2000_get_interface" (+2B4D5h)
+Address: 032D5955h (foo_uie_panel_splitter+35955h), symbol: "foobar2000_get_interface" (+22B45h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E6AA4h (foo_uie_panel_splitter+46AA4h), symbol: "foobar2000_get_interface" (+33C94h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 772EEEDAh (ntdll+3EEDAh), symbol: "RtlFreeHeap" (+CAh)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 71267376h (shared+7376h), symbol: "uCallStackTracker::uCallStackTracker" (+D6h)
+Address: 032DE42Ch (foo_uie_panel_splitter+3E42Ch), symbol: "foobar2000_get_interface" (+2B61Ch)
+Address: 032D6157h (foo_uie_panel_splitter+36157h), symbol: "foobar2000_get_interface" (+23347h)
+Address: 032DE688h (foo_uie_panel_splitter+3E688h), symbol: "foobar2000_get_interface" (+2B878h)
+Address: 032D54BCh (foo_uie_panel_splitter+354BCh), symbol: "foobar2000_get_interface" (+226ACh)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032A30FDh (foo_uie_panel_splitter+30FDh)
+Address: 71267376h (shared+7376h), symbol: "uCallStackTracker::uCallStackTracker" (+D6h)
+Address: 032DE2E5h (foo_uie_panel_splitter+3E2E5h), symbol: "foobar2000_get_interface" (+2B4D5h)
+Address: 032D5955h (foo_uie_panel_splitter+35955h), symbol: "foobar2000_get_interface" (+22B45h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E6AA4h (foo_uie_panel_splitter+46AA4h), symbol: "foobar2000_get_interface" (+33C94h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 772EEEDAh (ntdll+3EEDAh), symbol: "RtlFreeHeap" (+CAh)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 71267376h (shared+7376h), symbol: "uCallStackTracker::uCallStackTracker" (+D6h)
+Address: 032DE42Ch (foo_uie_panel_splitter+3E42Ch), symbol: "foobar2000_get_interface" (+2B61Ch)
+Address: 032D6157h (foo_uie_panel_splitter+36157h), symbol: "foobar2000_get_interface" (+23347h)
+Address: 032DE688h (foo_uie_panel_splitter+3E688h), symbol: "foobar2000_get_interface" (+2B878h)
+Address: 032D54BCh (foo_uie_panel_splitter+354BCh), symbol: "foobar2000_get_interface" (+226ACh)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032A30FDh (foo_uie_panel_splitter+30FDh)
+Address: 71267376h (shared+7376h), symbol: "uCallStackTracker::uCallStackTracker" (+D6h)
+Address: 032DE2E5h (foo_uie_panel_splitter+3E2E5h), symbol: "foobar2000_get_interface" (+2B4D5h)
+Address: 032D5955h (foo_uie_panel_splitter+35955h), symbol: "foobar2000_get_interface" (+22B45h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E6AA4h (foo_uie_panel_splitter+46AA4h), symbol: "foobar2000_get_interface" (+33C94h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 772EEEDAh (ntdll+3EEDAh), symbol: "RtlFreeHeap" (+CAh)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 71267376h (shared+7376h), symbol: "uCallStackTracker::uCallStackTracker" (+D6h)
+Address: 032DE42Ch (foo_uie_panel_splitter+3E42Ch), symbol: "foobar2000_get_interface" (+2B61Ch)
+Address: 032D6157h (foo_uie_panel_splitter+36157h), symbol: "foobar2000_get_interface" (+23347h)
+Address: 032DE688h (foo_uie_panel_splitter+3E688h), symbol: "foobar2000_get_interface" (+2B878h)
+Address: 032D54BCh (foo_uie_panel_splitter+354BCh), symbol: "foobar2000_get_interface" (+226ACh)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 00393539h (foobar2000+1E3539h)
+Address: 032A30FDh (foo_uie_panel_splitter+30FDh)
+Address: 71267376h (shared+7376h), symbol: "uCallStackTracker::uCallStackTracker" (+D6h)
+Address: 032DE2E5h (foo_uie_panel_splitter+3E2E5h), symbol: "foobar2000_get_interface" (+2B4D5h)
+Address: 032D5955h (foo_uie_panel_splitter+35955h), symbol: "foobar2000_get_interface" (+22B45h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 77365240h (ntdll+B5240h), symbol: "NtdllDialogWndProc_W" (+160h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E6AA4h (foo_uie_panel_splitter+46AA4h), symbol: "foobar2000_get_interface" (+33C94h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 032E5FA8h (foo_uie_panel_splitter+45FA8h), symbol: "foobar2000_get_interface" (+33198h)
+Address: 75E19C1Fh (USER32+29C1Fh), symbol: "GetWindowLongW" (+124Fh)
+Address: 7734365Eh (ntdll+9365Eh), symbol: "RtlGetSystemTimeAndBias" (+1BBEh)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 032E5CD8h (foo_uie_panel_splitter+45CD8h), symbol: "foobar2000_get_interface" (+32EC8h)
+Address: 71267376h (shared+7376h), symbol: "uCallStackTracker::uCallStackTracker" (+D6h)
+Address: 032DE42Ch (foo_uie_panel_splitter+3E42Ch), symbol: "foobar2000_get_interface" (+2B61Ch)
+Address: 032D6157h (foo_uie_panel_splitter+36157h), symbol: "foobar2000_get_interface" (+23347h)
+Address: 032DE688h (foo_uie_panel_splitter+3E688h), symbol: "foobar2000_get_interface" (+2B878h)
+Address: 6F54FED1h (foo_ui_columns+11FED1h)
+Address: 76BE3910h (GDI32+3910h), symbol: "DeleteObject" (+0h)
+Address: 7555D550h (KERNELBASE+14D550h), symbol: "GetLastError" (+0h)
+Address: 6F6B3B64h (foo_ui_columns+283B64h), symbol: "foobar2000_get_interface" (+10FE54h)
+Address: 6F652A01h (foo_ui_columns+222A01h), symbol: "foobar2000_get_interface" (+AECF1h)
+Address: 6F71538Ch (foo_ui_columns+2E538Ch), symbol: "foobar2000_get_interface" (+17167Ch)
+Address: 6F468288h (foo_ui_columns+38288h)
+Address: 6F6B2D64h (foo_ui_columns+282D64h), symbol: "foobar2000_get_interface" (+10F054h)
+Address: 6F6AE7A4h (foo_ui_columns+27E7A4h), symbol: "foobar2000_get_interface" (+10AA94h)
+Address: 6F46BAFFh (foo_ui_columns+3BAFFh)
+Address: 6F6741BFh (foo_ui_columns+2441BFh), symbol: "foobar2000_get_interface" (+D04AFh)
+Address: 6F5537F4h (foo_ui_columns+1237F4h)
+Address: 00200065h (foobar2000+50065h)
+Address: 00490055h (foobar2000+2E0055h)
+Address: 00200065h (foobar2000+50065h)
+Address: 00490055h (foobar2000+2E0055h)
+Address: 00200065h (foobar2000+50065h)
+Address: 00490055h (foobar2000+2E0055h)
+Address: 00200065h (foobar2000+50065h)
+Address: 00490055h (foobar2000+2E0055h)
+Address: 00200065h (foobar2000+50065h)
+Address: 00490055h (foobar2000+2E0055h)
+Address: 6F63B09Dh (foo_ui_columns+20B09Dh), symbol: "foobar2000_get_interface" (+9738Dh)
+Address: 6F59C781h (foo_ui_columns+16C781h)
+Address: 77332580h (ntdll+82580h), symbol: "wcstombs" (+70h)
+Address: 6F719668h (foo_ui_columns+2E9668h), symbol: "foobar2000_get_interface" (+175958h)
+Address: 6F719664h (foo_ui_columns+2E9664h), symbol: "foobar2000_get_interface" (+175954h)
+Address: 75E18D6Eh (USER32+28D6Eh), symbol: "GetWindowLongW" (+39Eh)
+Address: 6F674374h (foo_ui_columns+244374h), symbol: "foobar2000_get_interface" (+D0664h)
+Address: 6F538F44h (foo_ui_columns+108F44h)
+Address: 6F59C16Dh (foo_ui_columns+16C16Dh)
+Address: 77345A9Eh (ntdll+95A9Eh), symbol: "RtlNumberOfSetBitsUlongPtr" (+BEEh)
+Address: 77303519h (ntdll+53519h), symbol: "RtlLeaveCriticalSection" (+B9h)
+Address: 75E18A57h (USER32+28A57h), symbol: "GetWindowLongW" (+87h)
+Address: 6F678025h (foo_ui_columns+248025h), symbol: "foobar2000_get_interface" (+D4315h)
+Address: 6F59BE52h (foo_ui_columns+16BE52h)
+Address: 6F59BE52h (foo_ui_columns+16BE52h)
+Address: 6F59BDF0h (foo_ui_columns+16BDF0h)
+
+Environment:
+App: foobar2000 v2.26
+Arch: x86
+UI: Columns UI 3.7.0
+
+Components:
+Core (2026-10-01 11:13:56 UTC)
+    foobar2000 core 2.26
+foo_converter (2026-10-01 11:14:00 UTC)
+    Converter 2.26
+foo_dsp_eq (2026-10-01 11:14:02 UTC)
+    Equalizer 1.2.4
+foo_dsp_std (2026-10-01 11:14:04 UTC)
+    ARDFTSRC Resampler 0.5
+    Standard DSP Array 2.26
+foo_fileops (2026-10-01 11:14:06 UTC)
+    File Operations 2.26
+foo_freedb2 (2026-10-01 11:14:08 UTC)
+    Online Tagger 0.10
+foo_input_std (2026-10-01 11:14:08 UTC)
+    CD Audio Decoder 2.26
+    FFmpeg Decoders N-122697-gfcfb33922f
+    FLAC Decoder git-011a9914 20260127
+    Opus Decoder 1.6-19-gd8bdf8f3
+    Standard Input Array 2.26
+    WavPack Decoder 5.9.0
+foo_midi (2025-10-04 11:06:04 UTC)
+    MIDI Player 3.2.3.0
+foo_out_upnp (2026-10-01 11:09:18 UTC)
+    UPnP Tools 2.26
+foo_playcount (2026-04-16 07:05:00 UTC)
+    Playback Statistics 3.1.10
+foo_quicksearch (2024-06-17 09:10:18 UTC)
+    Quick Search Toolbar 3.9
+foo_ui_columns (2026-10-05 18:08:44 UTC)
+    Columns UI 3.7.0
+foo_ui_std (2026-10-01 11:14:10 UTC)
+    Album List 2.26
+    Decoding Speed Test 2.26
+    Default User Interface 2.26
+    File Integrity Verifier 2.26
+foo_uie_albumlist (2026-07-30 11:32:40 UTC)
+    Album list panel 2.2.0
+foo_uie_biography (2010-12-13 20:38:26 UTC)
+    Biography View 0.4.2.4
+foo_uie_elplaylist (2011-01-06 09:07:35 UTC)
+    ELPlaylist 0.6.9.1.2(beta)
+foo_uie_esplaylist (2011-05-29 09:36:21 UTC)
+    EsPlaylist 0.1.3.9
+foo_uie_lyrics3 (2023-11-18 07:53:00 UTC)
+    Lyric Show Panel 3 0.6
+foo_uie_panel_splitter (2010-05-27 11:03:02 UTC)
+    Panel Stack Splitter 0.3.8.3(alpha)
+foo_uie_vis_channel_spectrum (2010-03-07 08:23:55 UTC)
+    Channel Spectrum panel 0.17.2
+foo_uie_vis_peakmeter_spectrum (2010-03-07 08:24:47 UTC)
+    Peakmeter Spectrum Visualisation 0.2.0.0 beta
+foo_uie_wsh_panel_mod (2013-03-14 00:33:28 UTC)
+    WSH Panel Mod 1.5.6
+foo_unpack (2026-10-01 11:14:12 UTC)
+    ZIP/GZIP/RAR/7-Zip Reader 2.26
+foo_w7shell (2010-01-17 00:09:20 UTC)
+    Windows 7 integration 0.2.9.1
+foo_wave_seekbar (2014-02-08 19:37:10 UTC)
+    Waveform seekbar 0.2.45
+
+Recent events:
+[0ms] Pre component load
+[0ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\components\foo_out_upnp.dll
+[0ms] Component : foo_out_upnp API 81
+[0ms] Added 11 services
+[0ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_uie_lyrics3\foo_uie_lyrics3.dll
+[16ms] Component : foo_uie_lyrics3 API 80
+[16ms] Added 27 services
+[16ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\components\foo_dsp_eq.dll
+[16ms] Component : foo_dsp_eq API 81
+[16ms] Added 6 services
+[16ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_uie_biography\foo_uie_biography.dll
+[16ms] Component : foo_uie_biography API 76
+[16ms] Added 24 services
+[16ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_uie_albumlist\foo_uie_albumlist.dll
+[16ms] Component : foo_uie_albumlist API 80
+[16ms] Added 10 services
+[16ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_wave_seekbar\foo_wave_seekbar.dll
+[16ms] Component : foo_wave_seekbar API 77
+[16ms] Added 26 services
+[16ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\components\foo_ui_std.dll
+[16ms] Component : foo_ui_std API 81
+[16ms] Added 120 services
+[16ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_ui_columns\foo_ui_columns.dll
+[32ms] Component : foo_ui_columns API 80
+[32ms] Added 178 services
+[32ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_uie_wsh_panel_mod\foo_uie_wsh_panel_mod.dll
+[32ms] Component : foo_uie_wsh_panel_mod API 77
+[32ms] Added 12 services
+[32ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\components\foo_input_std.dll
+[32ms] Component : foo_input_std API 81
+[32ms] Added 201 services
+[32ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_uie_elplaylist\foo_uie_elplaylist.dll
+[32ms] Component : foo_uie_elplaylist API 76
+[32ms] Added 9 services
+[32ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_uie_vis_peakmeter_spectrum\foo_uie_vis_peakmeter_spectrum.dll
+[32ms] Component : foo_uie_vis_peakmeter_spectrum API 72
+[32ms] Added 2 services
+[32ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_quicksearch\foo_quicksearch.dll
+[32ms] Component : foo_quicksearch API 80
+[32ms] Added 17 services
+[32ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\components\foo_dsp_std.dll
+[32ms] Component : foo_dsp_std API 81
+[32ms] Added 20 services
+[32ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\components\foo_fileops.dll
+[32ms] Component : foo_fileops API 81
+[32ms] Added 18 services
+[32ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_w7shell\foo_w7shell.dll
+[32ms] Component : foo_w7shell API 76
+[32ms] Added 6 services
+[32ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\components\foo_unpack.dll
+[32ms] Component : foo_unpack API 81
+[32ms] Added 8 services
+[32ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\components\foo_freedb2.dll
+[32ms] Component : foo_freedb2 API 81
+[47ms] Added 9 services
+[47ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_uie_esplaylist\foo_uie_esplaylist.dll
+[47ms] Component : foo_uie_esplaylist API 76
+[47ms] Added 14 services
+[47ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\components\foo_converter.dll
+[47ms] Component : foo_converter API 81
+[47ms] Added 42 services
+[47ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_uie_panel_splitter\foo_uie_panel_splitter.dll
+[47ms] Component : foo_uie_panel_splitter API 73
+[47ms] Added 6 services
+[47ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_uie_vis_channel_spectrum\foo_uie_vis_channel_spectrum.dll
+[47ms] Component : foo_uie_vis_channel_spectrum API 73
+[47ms] Added 2 services
+[47ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_playcount\foo_playcount.dll
+[47ms] Component : foo_playcount API 80
+[47ms] Added 25 services
+[47ms] Loading DLL: X:\Users\Denis\AppData\Roaming\foobar2000\profile\user-components\foo_midi\foo_midi.dll
+[47ms] Component : foo_midi API 80
+[47ms] Added 12 services
+[47ms] Total: 1186 services, 187 classes
+[47ms] Components loaded in: 0:00.047307
+[63ms] Pre config read
+[63ms] Configuration read in: 0:00.003278
+[63ms] foobar2000 v2.26 x86 [portable]
+[79ms] Watching: D:\Music\FLAC\
+[79ms] Watching: D:\Music\Psf\
+[79ms] Watching: D:\Music\Nsf\
+[79ms] Watching: D:\Music\Ogg\
+[79ms] Watching: D:\Music\XM\
+[79ms] Watching: D:\Music\Mp3\
+[79ms] Watching: D:\Music\Midi\
+[79ms] Watching: D:\Music\Umx\
+[79ms] Watching: D:\Music\Spc\
+
+
+Machine specifications:
+OS: Windows 10.0.26200 x64
+CPU: Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz, features: MMX SSE SSE2 SSE3 SSE4.1 SSE4.2 AVX LZCNT
+CPU threads: 6
+Audio: Speakers (Sound Blaster Z); Speakers (High Definition Audio Device)

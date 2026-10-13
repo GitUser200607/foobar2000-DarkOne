@@ -1,0 +1,135 @@
+{
+    "version": 1,
+    "frontend": 0,
+    "legacy_rendering": false,
+    "custom_colors": [
+        {
+            "color": "#FF314F64",
+            "override": true
+        },
+        {
+            "color": "#FF414E57",
+            "override": true
+        },
+        {
+            "color": "#FF3F647F",
+            "override": true
+        },
+        {
+            "color": "#FF3F647F",
+            "override": true
+        },
+        {
+            "color": "#FF3D607C",
+            "override": true
+        },
+        {
+            "color": "#FF131E26",
+            "override": false
+        },
+        {
+            "color": "#FF8CADC6",
+            "override": true
+        }
+    ],
+    "has_border": false,
+    "always_show_cursor": true,
+    "cursor_width": 2.0,
+    "cursor_translucency": 100,
+    "shade_played": true,
+    "reveal_played": false,
+    "flip_display": false,
+    "flip_vertical": false,
+    "flip_alternate": false,
+    "half_wave": false,
+    "zero_line": true,
+    "edge_fade": true,
+    "soft_cursor": false,
+    "no_seek_color": true,
+    "album_art_colors": false,
+    "scale": 0,
+    "db_scale": false,
+    "scale_multiplier": 1.0,
+    "replaygain_boost_db": 0,
+    "db_floor": -30.0,
+    "transparent_background": false,
+    "downmix_display": 2,
+    "channel_gap": 10.0,
+    "gap_dark": true,
+    "shader_path": "",
+    "channels": [
+        {
+            "channel": 16,
+            "enabled": true
+        },
+        {
+            "channel": 1,
+            "enabled": true
+        },
+        {
+            "channel": 4,
+            "enabled": true
+        },
+        {
+            "channel": 2,
+            "enabled": true
+        },
+        {
+            "channel": 32,
+            "enabled": true
+        },
+        {
+            "channel": 8,
+            "enabled": true
+        },
+        {
+            "channel": 64,
+            "enabled": true
+        },
+        {
+            "channel": 128,
+            "enabled": true
+        },
+        {
+            "channel": 256,
+            "enabled": true
+        },
+        {
+            "channel": 512,
+            "enabled": true
+        },
+        {
+            "channel": 1024,
+            "enabled": true
+        },
+        {
+            "channel": 2048,
+            "enabled": true
+        },
+        {
+            "channel": 4096,
+            "enabled": true
+        },
+        {
+            "channel": 8192,
+            "enabled": true
+        },
+        {
+            "channel": 16384,
+            "enabled": true
+        },
+        {
+            "channel": 32768,
+            "enabled": true
+        },
+        {
+            "channel": 65536,
+            "enabled": true
+        },
+        {
+            "channel": 131072,
+            "enabled": true
+        }
+    ],
+    "display_mode": 0
+}

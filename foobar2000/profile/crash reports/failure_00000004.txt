@@ -1,0 +1,629 @@
+﻿Illegal operation:
+Code: C0000094h, flags: 00000000h, address: 6EC1A233h
+
+Call path not available.
+
+Code bytes (6EC1A233h):
+6EC1A1F3h:  00 00 CC CC CC CC CC CC CC CC CC CC CC 55 8B EC
+6EC1A203h:  68 1C 65 D3 6E FF 75 08 E8 F0 D2 0C 00 83 C4 08
+6EC1A213h:  5D C3 CC CC CC CC CC CC CC CC CC CC CC 55 8B EC
+6EC1A223h:  83 EC 24 8B 45 0C 33 D2 53 56 8B 75 10 8B 40 08
+6EC1A233h:  F7 F6 57 8B 7D 08 8B D8 56 89 5D DC 8D 4F 04 E8
+6EC1A243h:  A9 F2 FD FF C7 45 08 00 00 00 00 85 F6 0F 8E B4
+6EC1A253h:  01 00 00 8B 45 10 33 F6 C1 E0 02 89 45 E0 89 45
+6EC1A263h:  EC 8B 4F 04 83 C1 04 53 03 CE E8 DE F1 FD FF 8B
+
+Stack (042AF2FCh):
+042AF2DCh:  00000000 042AF38C 042AF41C 042AF2D8
+042AF2ECh:  042AF3CC 042AF3F4 77332580 9FB8C88E
+042AF2FCh:  00000000 042AF41C 6EA6ECFA 010D0000
+042AF30Ch:  00000000 17216068 042AF320 6EBF8902
+042AF31Ch:  17216068 042AF338 6EBF90B7 042AF400
+042AF32Ch:  6EC1C95F 042AF398 042AF354 00000000
+042AF33Ch:  00000800 6ED595A0 CA287C8F 6ED595A0
+042AF34Ch:  003F7768 042AF60C 6ED21024 16C92C38
+042AF35Ch:  00000000 00000001 6ED21024 16C92C58
+042AF36Ch:  00000000 00000001 6ED21024 16C92BC8
+042AF37Ch:  00000000 00000001 00000000 6ED21024
+042AF38Ch:  00000000 00000000 00000000 6ED20FCC
+042AF39Ch:  1658A6A0 00000000 00000001 6ED20FCC
+042AF3ACh:  1658A508 00000000 00000001 6ED20FCC
+042AF3BCh:  1658A490 00000000 00000001 042AF3DC
+042AF3CCh:  6ED22128 042AF3DC 00000000 00000000
+042AF3DCh:  6ED21024 00000000 00000000 00000000
+042AF3ECh:  6ED20B00 00000000 042AF5BC 6ED0FF56
+042AF3FCh:  00000006 042AF5C8 6EC1DD67 042AF560
+042AF40Ch:  CA287D47 042AF5D4 6ED20B48 042AF66C
+
+Registers:
+EAX: 00000000, EBX: 042AF41C, ECX: 6ED595A0, EDX: 00000000
+ESI: 00000000, EDI: 00000000, EBP: 042AF328, ESP: 042AF2FC
+
+Timestamp:
+2372484ms
+
+Crash location:
+Module: foo_wave_seekbar
+Offset: 4A233h
+
+Loaded modules:
+foobar2000                       loaded at 001B0000h - 00596000h
+ntdll                            loaded at 772B0000h - 7746F000h
+KERNEL32                         loaded at 76C10000h - 76D00000h
+KERNELBASE                       loaded at 75410000h - 756EA000h
+SHLWAPI                          loaded at 74D70000h - 74DC2000h
+ucrtbase                         loaded at 76AC0000h - 76BD0000h
+sqlite3                          loaded at 71290000h - 71380000h
+WINMM                            loaded at 74B70000h - 74BA3000h
+WS2_32                           loaded at 767C0000h - 7682A000h
+COMCTL32                         loaded at 71470000h - 71697000h
+RPCRT4                           loaded at 75310000h - 753CC000h
+msvcrt                           loaded at 765B0000h - 76677000h
+USER32                           loaded at 75DF0000h - 75FD7000h
+GDI32                            loaded at 76BE0000h - 76C02000h
+win32u                           loaded at 753E0000h - 753FC000h
+gdi32full                        loaded at 770D0000h - 771BA000h
+ADVAPI32                         loaded at 76520000h - 765A5000h
+UxTheme                          loaded at 74370000h - 743EE000h
+msvcp_win                        loaded at 766F0000h - 76775000h
+sechost                          loaded at 756F0000h - 75775000h
+combase                          loaded at 76D10000h - 76FA3000h
+VCRUNTIME140                     loaded at 719F0000h - 71A05000h
+SHELL32                          loaded at 75780000h - 75DE5000h
+ole32                            loaded at 76830000h - 76987000h
+OLEAUT32                         loaded at 74DF0000h - 74E8F000h
+zlib1                            loaded at 719D0000h - 719E9000h
+CRYPT32                          loaded at 76FB0000h - 770BE000h
+shared                           loaded at 71260000h - 71282000h
+MSVCP140                         loaded at 711F0000h - 7125D000h
+MSVCP140_ATOMIC_WAIT             loaded at 711D0000h - 711E2000h
+imagehlp                         loaded at 74DD0000h - 74DEB000h
+OLEACC                           loaded at 74BB0000h - 74C09000h
+MSIMG32                          loaded at 74490000h - 74496000h
+COMDLG32                         loaded at 75020000h - 750D9000h
+DNSAPI                           loaded at 72DA0000h - 72EAD000h
+WINHTTP                          loaded at 72570000h - 72656000h
+shcore                           loaded at 75FE0000h - 760B6000h
+AVRT                             loaded at 719C0000h - 719C9000h
+gdiplus                          loaded at 741E0000h - 7435E000h
+Secur32                          loaded at 711C0000h - 711CA000h
+DSPARSE                          loaded at 72D90000h - 72D9A000h
+SSPICLI                          loaded at 74100000h - 7412B000h
+dbghelp                          loaded at 70DD0000h - 70FB8000h
+dbgcore                          loaded at 71180000h - 711B0000h
+IMM32                            loaded at 76790000h - 767B5000h
+IPHLPAPI                         loaded at 744A0000h - 744C6000h
+NSI                              loaded at 76AB0000h - 76AB7000h
+kernel.appcore                   loaded at 749E0000h - 749F5000h
+bcryptPrimitives                 loaded at 74F10000h - 74F8A000h
+jklx86                           loaded at 70FE0000h - 70FEF000h
+MSCTF                            loaded at 76990000h - 76AA7000h
+foo_uie_elplaylist               loaded at 71100000h - 71173000h
+foo_midi                         loaded at 70A00000h - 70DD0000h
+bass                             loaded at 710B0000h - 710FD000h
+bassmidi                         loaded at 71020000h - 710A4000h
+MSACM32                          loaded at 71000000h - 7101A000h
+foo_uie_biography                loaded at 709A0000h - 709F8000h
+foo_w7shell                      loaded at 10000000h - 1003D000h
+foo_ui_columns                   loaded at 70150000h - 7099F000h
+mscms                            loaded at 700A0000h - 7013F000h
+dwmapi                           loaded at 70070000h - 70096000h
+urlmon                           loaded at 71CA0000h - 71E37000h
+USP10                            loaded at 6F940000h - 6F957000h
+WindowsCodecs                    loaded at 6FE80000h - 7005F000h
+d2d1                             loaded at 6F960000h - 6FE74000h
+d3d11                            loaded at 6F750000h - 6F93B000h
+iertutil                         loaded at 71A50000h - 71C8D000h
+dxgi                             loaded at 6F420000h - 6F528000h
+windows.storage                  loaded at 735F0000h - 73D09000h
+DWrite                           loaded at 6F530000h - 6F746000h
+srvcli                           loaded at 71A20000h - 71A3E000h
+powrprof                         loaded at 74B10000h - 74B65000h
+netutils                         loaded at 745B0000h - 745BB000h
+UMPDC                            loaded at 74A00000h - 74A0F000h
+foo_uie_vis_peakmeter_spectrum   loaded at 03460000h - 0349F000h
+foo_uie_vis_channel_spectrum     loaded at 034C0000h - 034FD000h
+foo_dsp_std                      loaded at 6F3C0000h - 6F411000h
+foo_freedb2                      loaded at 6F380000h - 6F3C0000h
+foo_playcount                    loaded at 6F340000h - 6F37A000h
+foo_out_upnp                     loaded at 6F210000h - 6F33B000h
+foo_uie_lyrics3                  loaded at 035D0000h - 0365D000h
+WININET                          loaded at 74670000h - 74893000h
+foo_uie_wsh_panel_mod            loaded at 6F120000h - 6F20C000h
+foo_unpack                       loaded at 6F080000h - 6F114000h
+foo_dsp_eq                       loaded at 6F030000h - 6F078000h
+foo_fileops                      loaded at 6EFC0000h - 6F025000h
+foo_uie_panel_splitter           loaded at 03720000h - 03779000h
+foo_converter                    loaded at 6EF00000h - 6EFB5000h
+foo_uie_albumlist                loaded at 6ED80000h - 6EEFD000h
+foo_wave_seekbar                 loaded at 6EBD0000h - 6ED79000h
+PSAPI                            loaded at 77290000h - 77296000h
+MSVCP120                         loaded at 6EB50000h - 6EBC1000h
+MSVCR120                         loaded at 6EA60000h - 6EB4E000h
+mswsock                          loaded at 71FE0000h - 72034000h
+foo_ui_std                       loaded at 6E8A0000h - 6EA5E000h
+foo_uie_esplaylist               loaded at 6E830000h - 6E89A000h
+foo_input_std                    loaded at 6E650000h - 6E830000h
+avformat-fb2k-62                 loaded at 6E200000h - 6E24B000h
+avutil-fb2k-60                   loaded at 6E250000h - 6E467000h
+avcodec-fb2k-62                  loaded at 6E470000h - 6E642000h
+bcrypt                           loaded at 72710000h - 7272C000h
+frontend_direct2d                loaded at 6E1B0000h - 6E1F1000h
+frontend_direct3d9               loaded at 6E160000h - 6E1B0000h
+d3dx9_42                         loaded at 6DF70000h - 6E155000h
+d3d9                             loaded at 6DDF0000h - 6DF6A000h
+VERSION                          loaded at 748A0000h - 748A8000h
+dxcore                           loaded at 6DDB0000h - 6DDE7000h
+SciLexer                         loaded at 6DD00000h - 6DDA2000h
+clbcatq                          loaded at 74F90000h - 75016000h
+Windows.UI                       loaded at 6DBE0000h - 6DCF1000h
+Windows.UI.Immersive             loaded at 6DAC0000h - 6DBD9000h
+twinapi.appcore                  loaded at 6D8C0000h - 6DAB1000h
+WinTypes                         loaded at 71E40000h - 71F39000h
+profapi                          loaded at 72660000h - 7267E000h
+dataexchange                     loaded at 6D860000h - 6D8AC000h
+sxs                              loaded at 6D7D0000h - 6D855000h
+TextShaping                      loaded at 71380000h - 7146B000h
+D3D10Warp                        loaded at 6D100000h - 6D7C7000h
+directxdatabasehelper            loaded at 6D0A0000h - 6D0ED000h
+cfgmgr32                         loaded at 74C90000h - 74CD0000h
+textinputframework               loaded at 6CF90000h - 6D08F000h
+CoreMessaging                    loaded at 6CEA0000h - 6CF80000h
+CoreUIComponents                 loaded at 6CC00000h - 6CE93000h
+CRYPTBASE                        loaded at 70FF0000h - 70FFA000h
+jscript                          loaded at 6CB20000h - 6CBEC000h
+jscript9Legacy                   loaded at 6C720000h - 6CB16000h
+explorerframe                    loaded at 6C4C0000h - 6C71B000h
+appresolver                      loaded at 6C420000h - 6C4B9000h
+MPR                              loaded at 726F0000h - 72709000h
+USERENV                          loaded at 748B0000h - 748D9000h
+PROPSYS                          loaded at 72040000h - 72109000h
+LINKINFO                         loaded at 6C410000h - 6C41B000h
+Windows.FileExplorer.Common      loaded at 71F40000h - 71FD8000h
+virtdisk                         loaded at 71900000h - 71911000h
+Windows.StateRepositoryPS        loaded at 6C3B0000h - 6C3FE000h
+windows.staterepositoryclient    loaded at 71980000h - 719B7000h
+Bcp47Langs                       loaded at 6C350000h - 6C39C000h
+ntshrui                          loaded at 6C2C0000h - 6C346000h
+cscapi                           loaded at 6C2A0000h - 6C2AE000h
+LvHook                           loaded at 3AA00000h - 3AB55000h
+Detoured                         loaded at 70FC0000h - 70FD4000h
+dhcpcsvc6                        loaded at 72130000h - 72148000h
+PP-UWP-Interop                   loaded at 6C290000h - 6C29A000h
+vccorlib140                      loaded at 6C240000h - 6C284000h
+dhcpcsvc                         loaded at 72110000h - 7212B000h
+Windows.Media.Playback.Backgrou  loaded at 6C170000h - 6C231000h
+MFPlat                           loaded at 6BFB0000h - 6C161000h
+RTWorkQ                          loaded at 6BF70000h - 6BF9F000h
+Windows.Media.MediaControl       loaded at 6BEF0000h - 6BF62000h
+MMDevAPI                         loaded at 73EC0000h - 73F47000h
+MFMediaEngine                    loaded at 6BB40000h - 6BEE7000h
+XmlLite                          loaded at 6BB00000h - 6BB32000h
+DEVOBJ                           loaded at 73E90000h - 73EB5000h
+AUDIOSES                         loaded at 73D10000h - 73E81000h
+Windows.Media.Devices            loaded at 6BA60000h - 6BAF1000h
+Windows.Media.Playback.ProxyStu  loaded at 6BA40000h - 6BA4D000h
+OneCoreUAPCommonProxyStub        loaded at 6B7A0000h - 6BA33000h
+rasadhlp                         loaded at 6B790000h - 6B798000h
+fwpuclnt                         loaded at 6B720000h - 6B782000h
+resourcepolicyclient             loaded at 6B700000h - 6B710000h
+ondemandconnroutehelper          loaded at 716B0000h - 716C8000h
+WINNSI                           loaded at 716A0000h - 716AA000h
+edputil                          loaded at 71950000h - 7196D000h
+atlthunk                         loaded at 6B6E0000h - 6B6EC000h
+wtdccm                           loaded at 6B6C0000h - 6B6CE000h
+Windows.System.Launcher          loaded at 6B580000h - 6B6AC000h
+windows.staterepositorycore      loaded at 6B560000h - 6B578000h
+apphelp                          loaded at 72450000h - 724FF000h
+cldapi                           loaded at 71920000h - 7194A000h
+ActXPrxy                         loaded at 6B520000h - 6B554000h
+OneCoreCommonProxyStub           loaded at 6B4C0000h - 6B511000h
+tiptsf                           loaded at 6B430000h - 6B4B4000h
+UIAutomationCore                 loaded at 6B0D0000h - 6B41F000h
+bassflac                         loaded at 6B0B0000h - 6B0C1000h
+basswv                           loaded at 6B090000h - 6B0A4000h
+bassopus                         loaded at 6B070000h - 6B08F000h
+bass_mpc                         loaded at 6B060000h - 6B06F000h
+DUI70                            loaded at 6AEF0000h - 6B058000h
+DUser                            loaded at 6AE60000h - 6AEE5000h
+thumbcache                       loaded at 6AE00000h - 6AE58000h
+Windows.Globalization            loaded at 6A950000h - 6AB29000h
+globinputhost                    loaded at 6A920000h - 6A946000h
+StructuredQuery                  loaded at 6A880000h - 6A91A000h
+icu                              loaded at 6A660000h - 6A875000h
+Windows.Storage.Search           loaded at 6A540000h - 6A64E000h
+ieframe                          loaded at 69F30000h - 6A537000h
+msIso                            loaded at 69EF0000h - 69F26000h
+windowsudk.shellcommon           loaded at 698C0000h - 69EDE000h
+twinapi                          loaded at 697F0000h - 698B6000h
+coml2                            loaded at 77220000h - 77282000h
+p9np                             loaded at 697D0000h - 697EB000h
+drprov                           loaded at 697C0000h - 697CA000h
+ntlanman                         loaded at 697A0000h - 697BA000h
+davclnt                          loaded at 69780000h - 69799000h
+WINSTA                           loaded at 69720000h - 6976F000h
+wkscli                           loaded at 69700000h - 69713000h
+dlnashext                        loaded at 696B0000h - 696FA000h
+PlayToDevice                     loaded at 69660000h - 696A6000h
+DevDispItemProvider              loaded at 69630000h - 69655000h
+wpdshext                         loaded at 69590000h - 69624000h
+PortableDeviceApi                loaded at 69500000h - 69583000h
+SETUPAPI                         loaded at 760C0000h - 76511000h
+WINTRUST                         loaded at 74EA0000h - 74F07000h
+MSASN1                           loaded at 72150000h - 7215E000h
+PortableDeviceTypes              loaded at 694D0000h - 694F9000h
+NetworkExplorer                  loaded at 69210000h - 69225000h
+TortoiseOverlays                 loaded at 691F0000h - 6920B000h
+TortoiseStub32                   loaded at 691D0000h - 691E9000h
+TortoiseSVN32                    loaded at 68A80000h - 691C9000h
+mssprxy                          loaded at 68A60000h - 68A72000h
+MLANG                            loaded at 68A20000h - 68A55000h
+policymanager                    loaded at 68970000h - 68A0F000h
+
+Stack dump analysis:
+Address: 6EA6ECFAh (MSVCR120+ECFAh), symbol: "free" (+1Ah)
+Address: 6EBF8902h (foo_wave_seekbar+28902h)
+Address: 6EBF90B7h (foo_wave_seekbar+290B7h)
+Address: 6EC1C95Fh (foo_wave_seekbar+4C95Fh)
+Address: 6ED595A0h (foo_wave_seekbar+1895A0h), symbol: "foobar2000_get_interface" (+7F160h)
+Address: 6ED595A0h (foo_wave_seekbar+1895A0h), symbol: "foobar2000_get_interface" (+7F160h)
+Address: 003F7768h (foobar2000+247768h)
+Address: 6ED21024h (foo_wave_seekbar+151024h), symbol: "foobar2000_get_interface" (+46BE4h)
+Address: 6ED21024h (foo_wave_seekbar+151024h), symbol: "foobar2000_get_interface" (+46BE4h)
+Address: 6ED21024h (foo_wave_seekbar+151024h), symbol: "foobar2000_get_interface" (+46BE4h)
+Address: 6ED21024h (foo_wave_seekbar+151024h), symbol: "foobar2000_get_interface" (+46BE4h)
+Address: 6ED20FCCh (foo_wave_seekbar+150FCCh), symbol: "foobar2000_get_interface" (+46B8Ch)
+Address: 6ED20FCCh (foo_wave_seekbar+150FCCh), symbol: "foobar2000_get_interface" (+46B8Ch)
+Address: 6ED20FCCh (foo_wave_seekbar+150FCCh), symbol: "foobar2000_get_interface" (+46B8Ch)
+Address: 6ED22128h (foo_wave_seekbar+152128h), symbol: "foobar2000_get_interface" (+47CE8h)
+Address: 6ED21024h (foo_wave_seekbar+151024h), symbol: "foobar2000_get_interface" (+46BE4h)
+Address: 6ED20B00h (foo_wave_seekbar+150B00h), symbol: "foobar2000_get_interface" (+466C0h)
+Address: 6ED0FF56h (foo_wave_seekbar+13FF56h), symbol: "foobar2000_get_interface" (+35B16h)
+Address: 6EC1DD67h (foo_wave_seekbar+4DD67h)
+Address: 6ED20B48h (foo_wave_seekbar+150B48h), symbol: "foobar2000_get_interface" (+46708h)
+Address: 6ED21F00h (foo_wave_seekbar+151F00h), symbol: "foobar2000_get_interface" (+47AC0h)
+Address: 003F7768h (foobar2000+247768h)
+Address: 6ED21D01h (foo_wave_seekbar+151D01h), symbol: "foobar2000_get_interface" (+478C1h)
+Address: 6ED21024h (foo_wave_seekbar+151024h), symbol: "foobar2000_get_interface" (+46BE4h)
+Address: 6ED21024h (foo_wave_seekbar+151024h), symbol: "foobar2000_get_interface" (+46BE4h)
+Address: 6ED21024h (foo_wave_seekbar+151024h), symbol: "foobar2000_get_interface" (+46BE4h)
+Address: 003F7768h (foobar2000+247768h)
+Address: 003F7768h (foobar2000+247768h)
+Address: 6ED595A0h (foo_wave_seekbar+1895A0h), symbol: "foobar2000_get_interface" (+7F160h)
+Address: 6ED20B88h (foo_wave_seekbar+150B88h), symbol: "foobar2000_get_interface" (+46748h)
+Address: 6EBF8916h (foo_wave_seekbar+28916h)
+Address: 6EBF9087h (foo_wave_seekbar+29087h)
+Address: 77341FE6h (ntdll+91FE6h), symbol: "RtlGetSystemTimeAndBias" (+546h)
+Address: 6ED21FCCh (foo_wave_seekbar+151FCCh), symbol: "foobar2000_get_interface" (+47B8Ch)
+Address: 772EF900h (ntdll+3F900h), symbol: "RtlAllocateHeap" (+80h)
+Address: 6ED21FB4h (foo_wave_seekbar+151FB4h), symbol: "foobar2000_get_interface" (+47B74h)
+Address: 6ED59404h (foo_wave_seekbar+189404h), symbol: "foobar2000_get_interface" (+7EFC4h)
+Address: 003F7768h (foobar2000+247768h)
+Address: 6ED59404h (foo_wave_seekbar+189404h), symbol: "foobar2000_get_interface" (+7EFC4h)
+Address: 6EA6ED63h (MSVCR120+ED63h), symbol: "malloc" (+33h)
+Address: 6ED595A0h (foo_wave_seekbar+1895A0h), symbol: "foobar2000_get_interface" (+7F160h)
+Address: 003F7768h (foobar2000+247768h)
+Address: 003F7768h (foobar2000+247768h)
+Address: 6ED1009Fh (foo_wave_seekbar+14009Fh), symbol: "foobar2000_get_interface" (+35C5Fh)
+Address: 6EC0981Fh (foo_wave_seekbar+3981Fh)
+Address: 6ED20B48h (foo_wave_seekbar+150B48h), symbol: "foobar2000_get_interface" (+46708h)
+Address: 6EC131F0h (foo_wave_seekbar+431F0h)
+Address: 772EEEDAh (ntdll+3EEDAh), symbol: "RtlFreeHeap" (+CAh)
+Address: 6ED0EA53h (foo_wave_seekbar+13EA53h), symbol: "foobar2000_get_interface" (+34613h)
+Address: 6EBFFA11h (foo_wave_seekbar+2FA11h)
+Address: 6ED0D7D8h (foo_wave_seekbar+13D7D8h), symbol: "foobar2000_get_interface" (+33398h)
+Address: 6EC13453h (foo_wave_seekbar+43453h)
+Address: 6ED59404h (foo_wave_seekbar+189404h), symbol: "foobar2000_get_interface" (+7EFC4h)
+Address: 6ED59404h (foo_wave_seekbar+189404h), symbol: "foobar2000_get_interface" (+7EFC4h)
+Address: 6ED0F2E8h (foo_wave_seekbar+13F2E8h), symbol: "foobar2000_get_interface" (+34EA8h)
+Address: 6EC138D2h (foo_wave_seekbar+438D2h)
+Address: 6ED0F368h (foo_wave_seekbar+13F368h), symbol: "foobar2000_get_interface" (+34F28h)
+Address: 6EC16EB0h (foo_wave_seekbar+46EB0h)
+Address: 6ED59404h (foo_wave_seekbar+189404h), symbol: "foobar2000_get_interface" (+7EFC4h)
+Address: 6ED0F718h (foo_wave_seekbar+13F718h), symbol: "foobar2000_get_interface" (+352D8h)
+Address: 6EC09AB1h (foo_wave_seekbar+39AB1h)
+Address: 6EBFA5B0h (foo_wave_seekbar+2A5B0h)
+Address: 6ED63F84h (foo_wave_seekbar+193F84h), symbol: "foobar2000_get_interface" (+89B44h)
+Address: 7555E1D7h (KERNELBASE+14E1D7h), symbol: "CloseHandle" (+57h)
+Address: 6ED0EAABh (foo_wave_seekbar+13EAABh), symbol: "foobar2000_get_interface" (+3466Bh)
+Address: 6EBD7195h (foo_wave_seekbar+7195h)
+Address: 6EA8BFB4h (MSVCR120+2BFB4h), symbol: "_get_flsindex" (+6h)
+Address: 6EA8C01Dh (MSVCR120+2C01Dh), symbol: "_get_flsindex" (+6Fh)
+Address: 6EA8BFB4h (MSVCR120+2BFB4h), symbol: "_get_flsindex" (+6h)
+Address: 6EA7A0D5h (MSVCR120+1A0D5h), symbol: "_ValidateRead" (+439h)
+Address: 6EA8C001h (MSVCR120+2C001h), symbol: "_get_flsindex" (+53h)
+Address: 6EA8BFB4h (MSVCR120+2BFB4h), symbol: "_get_flsindex" (+6h)
+Address: 76C25D49h (KERNEL32+15D49h), symbol: "BaseThreadInitThunk" (+19h)
+Address: 76C25D30h (KERNEL32+15D30h), symbol: "BaseThreadInitThunk" (+0h)
+Address: 7731E1FBh (ntdll+6E1FBh), symbol: "RtlInitializeExceptionChain" (+6Bh)
+Address: 7566A900h (KERNELBASE+25A900h), symbol: "UnhandledExceptionFilter" (+0h)
+Address: 77332580h (ntdll+82580h), symbol: "wcstombs" (+70h)
+Address: 7731E181h (ntdll+6E181h), symbol: "RtlGetAppContainerNamedObjectPath" (+231h)
+Address: 77365D39h (ntdll+B5D39h), symbol: "RtlCaptureContext" (+D9h)
+Address: 6EA8BFB4h (MSVCR120+2BFB4h), symbol: "_get_flsindex" (+6h)
+Address: 6E6F6974h (foo_input_std+A6974h)
+Address: 746F6F72h (WININET+86F72h), symbol: "AppCacheCloseHandle" (+B12h)
+Address: 6E6F6974h (foo_input_std+A6974h)
+Address: 706D6F63h (foo_ui_columns+586F63h), symbol: "foobar2000_get_interface" (+413253h)
+Address: 73736572h (windows.storage+146572h), symbol: "SHGetFolderPathW" (+B52h)
+Address: 7474696Dh (WININET+D696Dh), symbol: "InternetOpenA" (+D4Dh)
+Address: 6ED22DF0h (foo_wave_seekbar+152DF0h), symbol: "foobar2000_get_interface" (+489B0h)
+Address: 6ED596C8h (foo_wave_seekbar+1896C8h), symbol: "foobar2000_get_interface" (+7F288h)
+Address: 6ED213DCh (foo_wave_seekbar+1513DCh), symbol: "foobar2000_get_interface" (+46F9Ch)
+Address: 6EC6FEF0h (foo_wave_seekbar+9FEF0h), symbol: "g_gdi_entrypoint" (+39DF0h)
+Address: 003F7E00h (foobar2000+247E00h)
+Address: 001B0000h (foobar2000+0h)
+Address: 746F6F72h (WININET+86F72h), symbol: "AppCacheCloseHandle" (+B12h)
+
+Environment:
+App: foobar2000 v2.26
+Arch: x86
+UI: Columns UI 3.7.0
+
+Components:
+Core (2026-10-01 11:13:56 UTC)
+    foobar2000 core 2.26
+foo_converter (2026-10-01 11:14:00 UTC)
+    Converter 2.26
+foo_dsp_eq (2026-10-01 11:14:02 UTC)
+    Equalizer 1.2.4
+foo_dsp_std (2026-10-01 11:14:04 UTC)
+    ARDFTSRC Resampler 0.5
+    Standard DSP Array 2.26
+foo_fileops (2026-10-01 11:14:06 UTC)
+    File Operations 2.26
+foo_freedb2 (2026-10-01 11:14:08 UTC)
+    Online Tagger 0.10
+foo_input_std (2026-10-01 11:14:08 UTC)
+    CD Audio Decoder 2.26
+    FFmpeg Decoders N-122697-gfcfb33922f
+    FLAC Decoder git-011a9914 20260127
+    Opus Decoder 1.6-19-gd8bdf8f3
+    Standard Input Array 2.26
+    WavPack Decoder 5.9.0
+foo_midi (2025-10-04 11:06:04 UTC)
+    MIDI Player 3.2.3.0
+foo_out_upnp (2026-10-01 11:09:18 UTC)
+    UPnP Tools 2.26
+foo_playcount (2026-04-16 07:05:00 UTC)
+    Playback Statistics 3.1.10
+foo_ui_columns (2026-10-05 18:08:44 UTC)
+    Columns UI 3.7.0
+foo_ui_std (2026-10-01 11:14:10 UTC)
+    Album List 2.26
+    Decoding Speed Test 2.26
+    Default User Interface 2.26
+    File Integrity Verifier 2.26
+foo_uie_albumlist (2026-07-30 11:32:40 UTC)
+    Album list panel 2.2.0
+foo_uie_biography (2010-12-13 20:38:26 UTC)
+    Biography View 0.4.2.4
+foo_uie_elplaylist (2011-01-06 09:07:35 UTC)
+    ELPlaylist 0.6.9.1.2(beta)
+foo_uie_esplaylist (2011-05-29 09:36:21 UTC)
+    EsPlaylist 0.1.3.9
+foo_uie_lyrics3 (2023-11-18 07:53:00 UTC)
+    Lyric Show Panel 3 0.6
+foo_uie_panel_splitter (2010-05-27 11:03:02 UTC)
+    Panel Stack Splitter 0.3.8.3(alpha)
+foo_uie_vis_channel_spectrum (2010-03-07 08:23:55 UTC)
+    Channel Spectrum panel 0.17.2
+foo_uie_vis_peakmeter_spectrum (2010-03-07 08:24:47 UTC)
+    Peakmeter Spectrum Visualisation 0.2.0.0 beta
+foo_uie_wsh_panel_mod (2013-03-14 00:33:28 UTC)
+    WSH Panel Mod 1.5.6
+foo_unpack (2026-10-01 11:14:12 UTC)
+    ZIP/GZIP/RAR/7-Zip Reader 2.26
+foo_w7shell (2010-01-17 00:09:20 UTC)
+    Windows 7 integration 0.2.9.1
+foo_wave_seekbar (2014-02-08 19:37:10 UTC)
+    Waveform seekbar 0.2.45
+
+Recent events:
+[2254453ms] Opening track for playback: "D:\Music\Midi\Games\Castle Vania III\CV3-ST4.MID"
+[2254453ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2254453ms] Opened using: MIDI Player
+[2254453ms] foo_midi is using BASS 2.4.17.0.
+[2254453ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2254672ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2254672ms] foo_midi is using BASS 2.4.17.0.
+[2254672ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2254687ms] setConfigFloat(core.totalTimePlayed,1587715.3340121)
+[2255406ms] deleteConfigInt(core.playbackStatistics.playing)
+[2255406ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2255406ms] deleteConfigInt(core.playbackStatistics.position)
+[2255406ms] setConfigFloat(core.totalTimePlayed,1587716.0299300)
+[2255406ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2255422ms] Opening track for playback: "D:\Music\Midi\Games\Castle Vania III\CV3-ST4A.MID"
+[2255422ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2255422ms] Opened using: MIDI Player
+[2255422ms] foo_midi is using BASS 2.4.17.0.
+[2255422ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2255656ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2255656ms] foo_midi is using BASS 2.4.17.0.
+[2255656ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2255656ms] setConfigFloat(core.totalTimePlayed,1587716.2262467)
+[2256734ms] Wave cache: finished analysis of "D:\Music\Midi\Games\Castle Vania III\CV3-ST4.MID"
+[2257234ms] Wave cache: finished analysis of "D:\Music\Midi\Games\Castle Vania III\CV3-ST4A.MID"
+[2257562ms] deleteConfigInt(core.playbackStatistics.playing)
+[2257562ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2257562ms] deleteConfigInt(core.playbackStatistics.position)
+[2257562ms] setConfigFloat(core.totalTimePlayed,1587718.0734278)
+[2257562ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2257578ms] Opening track for playback: "D:\Music\Midi\Games\Castle Vania III\DG_C3_Mad_Forest.mid"
+[2257578ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2257593ms] Opened using: MIDI Player
+[2257593ms] foo_midi is using BASS 2.4.17.0.
+[2257593ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2257812ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2257812ms] foo_midi is using BASS 2.4.17.0.
+[2257812ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2257828ms] setConfigFloat(core.totalTimePlayed,1587718.2226424)
+[2258484ms] deleteConfigInt(core.playbackStatistics.playing)
+[2258484ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2258484ms] deleteConfigInt(core.playbackStatistics.position)
+[2258484ms] setConfigFloat(core.totalTimePlayed,1587718.7385674)
+[2258484ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2258500ms] Opening track for playback: "D:\Music\Midi\Games\Doom II\Doom-RMX\E1M1XG.MID"
+[2258500ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2258500ms] Opened using: MIDI Player
+[2258500ms] foo_midi is using BASS 2.4.17.0.
+[2258500ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2258718ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2258718ms] foo_midi is using BASS 2.4.17.0.
+[2258718ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2258750ms] setConfigFloat(core.totalTimePlayed,1587718.9326689)
+[2260422ms] Wave cache: finished analysis of "D:\Music\Midi\Games\Doom II\Doom-RMX\E1M1XG.MID"
+[2263640ms] Wave cache: finished analysis of "D:\Music\Midi\Games\Castle Vania III\DG_C3_Mad_Forest.mid"
+[2266578ms] deleteConfigInt(core.playbackStatistics.playing)
+[2266578ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2266578ms] deleteConfigInt(core.playbackStatistics.position)
+[2266578ms] setConfigFloat(core.totalTimePlayed,1587726.5561511)
+[2266578ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2266593ms] Opening track for playback: "D:\Music\Midi\Games\Doom II\MAP01.MID"
+[2266609ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2266609ms] Opened using: MIDI Player
+[2266609ms] foo_midi is using BASS 2.4.17.0.
+[2266609ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2266828ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2266828ms] foo_midi is using BASS 2.4.17.0.
+[2266828ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2266843ms] setConfigFloat(core.totalTimePlayed,1587726.7499163)
+[2270422ms] Wave cache: finished analysis of "D:\Music\Midi\Games\Doom II\MAP01.MID"
+[2270750ms] deleteConfigInt(core.playbackStatistics.playing)
+[2270750ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2270750ms] deleteConfigInt(core.playbackStatistics.position)
+[2270750ms] setConfigFloat(core.totalTimePlayed,1587730.4584159)
+[2270750ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2270750ms] Opening track for playback: "D:\Music\Midi\Games\Doom II\READ_M.MID"
+[2270765ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2270765ms] Opened using: MIDI Player
+[2270765ms] foo_midi is using BASS 2.4.17.0.
+[2270765ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2270984ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2270984ms] foo_midi is using BASS 2.4.17.0.
+[2270984ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2271000ms] setConfigFloat(core.totalTimePlayed,1587730.6476127)
+[2277203ms] Wave cache: finished analysis of "D:\Music\Midi\Games\Doom II\READ_M.MID"
+[2277875ms] deleteConfigInt(core.playbackStatistics.playing)
+[2277875ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2277875ms] deleteConfigInt(core.playbackStatistics.position)
+[2277875ms] setConfigFloat(core.totalTimePlayed,1587737.4252876)
+[2277875ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2277890ms] Opening track for playback: "D:\Music\Midi\Games\Doom II\Unknown\DOOM-1.MID"
+[2277906ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2277906ms] Opened using: MIDI Player
+[2277906ms] foo_midi is using BASS 2.4.17.0.
+[2277906ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2278125ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2278125ms] foo_midi is using BASS 2.4.17.0.
+[2278125ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2278140ms] setConfigFloat(core.totalTimePlayed,1587737.5789319)
+[2279656ms] deleteConfigInt(core.playbackStatistics.playing)
+[2279656ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2279656ms] deleteConfigInt(core.playbackStatistics.position)
+[2279656ms] setConfigFloat(core.totalTimePlayed,1587739.0048351)
+[2279656ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2279672ms] Opening track for playback: "D:\Music\Midi\Games\Doom II\Unknown\doom-2.mid"
+[2279687ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2279687ms] Opened using: MIDI Player
+[2279687ms] foo_midi is using BASS 2.4.17.0.
+[2279687ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2279906ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2279906ms] foo_midi is using BASS 2.4.17.0.
+[2279906ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2279922ms] setConfigFloat(core.totalTimePlayed,1587739.2002234)
+[2280765ms] Wave cache: finished analysis of "D:\Music\Midi\Games\Doom II\Unknown\DOOM-1.MID"
+[2281093ms] deleteConfigInt(core.playbackStatistics.playing)
+[2281093ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2281093ms] deleteConfigInt(core.playbackStatistics.position)
+[2281093ms] setConfigFloat(core.totalTimePlayed,1587740.3059079)
+[2281093ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2281093ms] Opening track for playback: "D:\Music\Midi\Games\Doom\D1INTER.MID"
+[2281109ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2281109ms] Opened using: MIDI Player
+[2281109ms] foo_midi is using BASS 2.4.17.0.
+[2281109ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2281328ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2281328ms] foo_midi is using BASS 2.4.17.0.
+[2281328ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2281343ms] setConfigFloat(core.totalTimePlayed,1587740.4605066)
+[2282375ms] Wave cache: finished analysis of "D:\Music\Midi\Games\Doom II\Unknown\doom-2.mid"
+[2283187ms] deleteConfigInt(core.playbackStatistics.playing)
+[2283187ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2283187ms] deleteConfigInt(core.playbackStatistics.position)
+[2283187ms] setConfigFloat(core.totalTimePlayed,1587742.2568805)
+[2283187ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2283187ms] Opening track for playback: "D:\Music\Midi\Games\Doom\e1m1.midi"
+[2283203ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2283203ms] Opened using: MIDI Player
+[2283203ms] foo_midi is using BASS 2.4.17.0.
+[2283203ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2283422ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2283422ms] foo_midi is using BASS 2.4.17.0.
+[2283422ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2283437ms] setConfigFloat(core.totalTimePlayed,1587742.4434641)
+[2284562ms] Wave cache: finished analysis of "D:\Music\Midi\Games\Doom\e1m1.midi"
+[2284578ms] Wave cache: finished analysis of "D:\Music\Midi\Games\Doom\D1INTER.MID"
+[2285406ms] foo_midi failed to initialize FluidSynth: Invalid FluidSynth directory: The system cannot find the path specified (0x00000003)
+[2285406ms] foo_midi is enumerating VSTi plug-ins...
+[2285406ms] foo_midi found no compatible VSTi plug-ins.
+[2285406ms] foo_midi is enumerating CLAP plug-ins...
+[2285406ms] foo_midi found no compatible CLAP plug-ins.
+[2341500ms] setConfigInt(cfg_var.3519E151-0C6B-4459-A25B-64797D668D2A,-1)
+[2341500ms] setConfigInt(cfg_var.1A82A8DB-389E-44AA-9719-326A5A2D7E8E,7)
+[2342547ms] deleteConfigInt(core.playbackStatistics.playing)
+[2342547ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2342547ms] deleteConfigInt(core.playbackStatistics.position)
+[2342547ms] setConfigFloat(core.totalTimePlayed,1587801.5157886)
+[2342547ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2342547ms] Opening track for playback: "D:\Music\Midi\Games\Doom\e1m1.midi"
+[2342562ms] foo_midi is using soundfont "D:\Distr-free\Media\VirtualMIDISynth\SoundFonts\Timbres Of Heaven (XGM)\Timbres Of Heaven (XGM) 3.94.sf2" (Preferred bank offset 0).
+[2342562ms] Opened using: MIDI Player
+[2342562ms] foo_midi is using BASS 2.4.17.0.
+[2342562ms] foo_midi is using BASS MIDI 2.4.15.3.
+[2342797ms] setConfigFloat(core.totalTimePlayed,1587801.7118465)
+[2365906ms] setConfigInt(cfg_var.1253BAC2-9193-420C-A919-9A1CF8706E2C,0)
+[2366734ms] deleteConfigInt(core.playbackStatistics.playing)
+[2366734ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2366734ms] deleteConfigInt(core.playbackStatistics.position)
+[2366734ms] setConfigFloat(core.totalTimePlayed,1587825.5710896)
+[2366734ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2366734ms] Opening track for playback: "D:\Music\Midi\Games\Doom\e1m1.midi"
+[2366750ms] Opened using: MIDI Player
+[2366984ms] setConfigFloat(core.totalTimePlayed,1587825.6909144)
+[2371187ms] setConfigInt(cfg_var.1253BAC2-9193-420C-A919-9A1CF8706E2C,3)
+[2371828ms] deleteConfigInt(core.playbackStatistics.playing)
+[2371828ms] deleteConfigInt(core.playbackStatistics.bumped)
+[2371828ms] deleteConfigInt(core.playbackStatistics.position)
+[2371828ms] setConfigFloat(core.totalTimePlayed,1587830.4729807)
+[2371828ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[2371843ms] Opening track for playback: "D:\Music\Midi\Games\Doom\e1m1.midi"
+[2371843ms] foo_midi is attempting to load the MT-32 ROMs from the component directory because the location was not configured.
+[2371843ms] Opened using: MIDI Player
+[2372078ms] setConfigFloat(core.totalTimePlayed,1587830.4729807)
+[2372078ms] Opening track for playback: "D:\Music\Midi\Games\Doom\e1m1.zip|e1m1.midi"
+[2372093ms] foo_midi is attempting to load the MT-32 ROMs from the component directory because the location was not configured.
+[2372093ms] Opened using: MIDI Player
+[2372297ms] foo_midi is attempting to load the MT-32 ROMs from the component directory because the location was not configured.
+[2372328ms] setConfigFloat(core.totalTimePlayed,1587830.4729807)
+[2372328ms] Opening track for playback: "D:\Music\Midi\Games\Doom\E1M2.MID"
+[2372328ms] foo_midi is attempting to load the MT-32 ROMs from the component directory because the location was not configured.
+[2372343ms] Opened using: MIDI Player
+[2372593ms] foo_midi is attempting to load the MT-32 ROMs from the component directory because the location was not configured.
+[2372609ms] setConfigFloat(core.totalTimePlayed,1587830.4729807)
+[2372625ms] Opening track for playback: "D:\Music\Midi\Games\Doom\E1M3.MID"
+[2372625ms] foo_midi is attempting to load the MT-32 ROMs from the component directory because the location was not configured.
+[2372625ms] Opened using: MIDI Player
+[2372828ms] foo_midi is attempting to load the MT-32 ROMs from the component directory because the location was not configured.
+[2372843ms] setConfigFloat(core.totalTimePlayed,1587830.4729807)
+[2372859ms] Opening track for playback: "D:\Music\Midi\Games\Doom\E1M4.MID"
+[2372859ms] foo_midi is attempting to load the MT-32 ROMs from the component directory because the location was not configured.
+[2372859ms] Opened using: MIDI Player
+
+
+Machine specifications:
+OS: Windows 10.0.26200 x64
+CPU: Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz, features: MMX SSE SSE2 SSE3 SSE4.1 SSE4.2 AVX LZCNT
+CPU threads: 6
+Audio: Speakers (Sound Blaster Z); Speakers (High Definition Audio Device)

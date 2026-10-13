@@ -1,0 +1,670 @@
+﻿Illegal operation:
+Code: E06D7363h, flags: 00000001h, address: 7536AED4h
+Additional parameters: 19930520h 012FCC30h 00E87504h
+Message: Undefined error
+
+Call path:
+app_mainloop
+
+Code bytes (7536AED4h):
+7536AE94h:  8B 45 0C 83 E0 01 C7 44 24 0C 70 AE 36 75 89 44
+7536AEA4h:  24 04 85 C9 74 3B 6A 0F 58 39 45 10 0F 46 45 10
+7536AEB4h:  89 44 24 10 C1 E0 02 50 51 8D 44 24 1C 50 E8 03
+7536AEC4h:  86 07 00 83 C4 0C 8D 04 24 50 FF 15 70 D4 48 75
+7536AED4h:  8B 4C 24 54 33 CC E8 52 72 00 00 8B E5 5D C2 10
+7536AEE4h:  00 83 64 24 10 00 EB DE CC CC CC CC CC CC CC CC
+7536AEF4h:  CC CC CC CC CC CC CC CC CC CC CC CC 8B FF 55 8B
+7536AF04h:  EC 51 8B 45 08 83 F8 F4 0F 84 D8 10 08 00 83 F8
+
+Stack (012FCB90h):
+012FCB70h:  00000000 00000000 00000000 00000000
+012FCB80h:  7536AEC7 012FCBEC 7536AED4 012FCB90
+012FCB90h:  E06D7363 00000001 00000000 7536AED4
+012FCBA0h:  00000003 19930520 012FCC30 00E87504
+012FCBB0h:  012FCBC4 768B00EB 01460000 00000000
+012FCBC0h:  1A2DF5C0 012FCBD4 768B00B8 1A2DF5C0
+012FCBD0h:  00000000 012FCC24 00B8EE5E 1A2DF5C0
+012FCBE0h:  012FCC0C 27DB8585 1A2DF428 012FCC20
+012FCBF0h:  71A14977 E06D7363 00000001 00000003
+012FCC00h:  012FCC14 1A2DF428 1A989DC0 1A2DF5C0
+012FCC10h:  012FCC30 19930520 012FCC30 00E87504
+012FCC20h:  012FCC40 00D454D9 012FCC30 00E87504
+012FCC30h:  00E23B14 1AAC2EB8 00000001 00000000
+012FCC40h:  012FCC60 00CA24AD 003507A4 00000000
+012FCC50h:  1A989DB8 012FCC8C 00DF02B9 00000001
+012FCC60h:  012FCC98 00CA20C4 003507A4 012FCC88
+012FCC70h:  0149CF70 1A2DF428 FFFFFFFF 00E13310
+012FCC80h:  FFFFFFFF 1A989DB8 012FCC74 012FCCB8
+012FCC90h:  00DDC28A 00000000 012FCCC4 00CA2118
+012FCCA0h:  FFFFFFFF 00E13310 FFFFFFFF 00E13310
+
+Registers:
+EAX: 012FCB90, EBX: 19930520, ECX: 00000003, EDX: 00000000
+ESI: 1A989DB8, EDI: 00E87504, EBP: 012FCBEC, ESP: 012FCB90
+
+Timestamp:
+949422ms
+
+Crash location:
+Module: KERNELBASE
+Offset: 16AED4h
+Symbol: "RaiseException" (+64h)
+
+Loaded modules:
+foobar2000                       loaded at 00B40000h - 00F26000h
+ntdll                            loaded at 772B0000h - 7746F000h
+KERNEL32                         loaded at 756F0000h - 757E0000h
+KERNELBASE                       loaded at 75200000h - 754DA000h
+SHLWAPI                          loaded at 74ED0000h - 74F22000h
+ucrtbase                         loaded at 76880000h - 76990000h
+sqlite3                          loaded at 71280000h - 71370000h
+COMCTL32                         loaded at 71530000h - 71757000h
+WS2_32                           loaded at 76C00000h - 76C6A000h
+WINMM                            loaded at 74BD0000h - 74C03000h
+msvcrt                           loaded at 76D40000h - 76E07000h
+RPCRT4                           loaded at 754E0000h - 7559C000h
+GDI32                            loaded at 769A0000h - 769C2000h
+USER32                           loaded at 76E90000h - 77077000h
+win32u                           loaded at 760D0000h - 760EC000h
+gdi32full                        loaded at 77080000h - 7716A000h
+ADVAPI32                         loaded at 75FD0000h - 76055000h
+msvcp_win                        loaded at 769E0000h - 76A65000h
+sechost                          loaded at 77170000h - 771F5000h
+UxTheme                          loaded at 74370000h - 743EE000h
+SHELL32                          loaded at 76210000h - 76875000h
+combase                          loaded at 757F0000h - 75A83000h
+ole32                            loaded at 74D70000h - 74EC7000h
+VCRUNTIME140                     loaded at 71A10000h - 71A25000h
+OLEAUT32                         loaded at 76160000h - 761FF000h
+CRYPT32                          loaded at 74F30000h - 7503E000h
+zlib1                            loaded at 719F0000h - 71A09000h
+shared                           loaded at 71410000h - 71432000h
+MSVCP140                         loaded at 713A0000h - 7140D000h
+MSVCP140_ATOMIC_WAIT             loaded at 719D0000h - 719E2000h
+MSIMG32                          loaded at 74400000h - 74406000h
+OLEACC                           loaded at 74B70000h - 74BC9000h
+imagehlp                         loaded at 75050000h - 7506B000h
+DNSAPI                           loaded at 73700000h - 7380D000h
+COMDLG32                         loaded at 755B0000h - 75669000h
+AVRT                             loaded at 71390000h - 71399000h
+WINHTTP                          loaded at 72780000h - 72866000h
+shcore                           loaded at 75EF0000h - 75FC6000h
+gdiplus                          loaded at 73FC0000h - 7413E000h
+Secur32                          loaded at 71380000h - 7138A000h
+DSPARSE                          loaded at 736F0000h - 736FA000h
+dbghelp                          loaded at 71090000h - 71278000h
+dbgcore                          loaded at 71050000h - 71080000h
+SSPICLI                          loaded at 73F50000h - 73F7B000h
+IMM32                            loaded at 76C70000h - 76C95000h
+IPHLPAPI                         loaded at 74410000h - 74436000h
+NSI                              loaded at 76E10000h - 76E17000h
+kernel.appcore                   loaded at 749E0000h - 749F5000h
+bcryptPrimitives                 loaded at 75670000h - 756EA000h
+jklx86                           loaded at 71370000h - 7137F000h
+MSCTF                            loaded at 75070000h - 75187000h
+foo_fileops                      loaded at 70F60000h - 70FC5000h
+foo_w7shell                      loaded at 10000000h - 1003D000h
+foo_uie_elplaylist               loaded at 70EE0000h - 70F53000h
+foo_uie_vis_channel_spectrum     loaded at 01BD0000h - 01C0D000h
+foo_playcount                    loaded at 71010000h - 7104A000h
+foo_dsp_std                      loaded at 70E80000h - 70ED1000h
+foo_gep                          loaded at 70A90000h - 70E7A000h
+foo_midi                         loaded at 706C0000h - 70A90000h
+bass                             loaded at 70670000h - 706BD000h
+bassmidi                         loaded at 705E0000h - 70664000h
+MSACM32                          loaded at 70FF0000h - 7100A000h
+foo_ui_columns                   loaded at 6FD90000h - 705DF000h
+dwmapi                           loaded at 6FD60000h - 6FD86000h
+mscms                            loaded at 6FCB0000h - 6FD4F000h
+urlmon                           loaded at 71D60000h - 71EF7000h
+USP10                            loaded at 6F580000h - 6F597000h
+WindowsCodecs                    loaded at 6F5A0000h - 6F77F000h
+d2d1                             loaded at 6F790000h - 6FCA4000h
+DWrite                           loaded at 6F170000h - 6F386000h
+d3d11                            loaded at 6F390000h - 6F57B000h
+dxgi                             loaded at 6F060000h - 6F168000h
+iertutil                         loaded at 71B10000h - 71D4D000h
+windows.storage                  loaded at 73830000h - 73F49000h
+powrprof                         loaded at 74B10000h - 74B65000h
+srvcli                           loaded at 71AE0000h - 71AFE000h
+netutils                         loaded at 745B0000h - 745BB000h
+UMPDC                            loaded at 74A00000h - 74A0F000h
+foo_freedb2                      loaded at 6F020000h - 6F060000h
+foo_unpack                       loaded at 6EF80000h - 6F014000h
+foo_uie_vis_peakmeter_spectrum   loaded at 038B0000h - 038EF000h
+foo_uie_lyrics3                  loaded at 03920000h - 039AD000h
+WININET                          loaded at 745C0000h - 747E3000h
+foo_input_std                    loaded at 6EDA0000h - 6EF80000h
+avformat-fb2k-62                 loaded at 6ED50000h - 6ED9B000h
+avutil-fb2k-60                   loaded at 6E950000h - 6EB67000h
+avcodec-fb2k-62                  loaded at 6EB70000h - 6ED42000h
+bcrypt                           loaded at 72C20000h - 72C3C000h
+foo_converter                    loaded at 6E890000h - 6E945000h
+foo_uie_wsh_panel_mod            loaded at 6E7A0000h - 6E88C000h
+foo_uie_esplaylist               loaded at 6E730000h - 6E79A000h
+foo_ui_std                       loaded at 6E570000h - 6E72E000h
+foo_uie_panel_splitter           loaded at 03C20000h - 03C79000h
+foo_uie_albumlist                loaded at 6E3F0000h - 6E56D000h
+foo_uie_biography                loaded at 6E390000h - 6E3E8000h
+foo_out_upnp                     loaded at 6E260000h - 6E38B000h
+foo_wave_seekbar                 loaded at 6E0B0000h - 6E259000h
+PSAPI                            loaded at 769D0000h - 769D6000h
+MSVCP120                         loaded at 6DF40000h - 6DFB1000h
+MSVCR120                         loaded at 6DFC0000h - 6E0AE000h
+mswsock                          loaded at 72130000h - 72184000h
+foo_dsp_eq                       loaded at 6DEF0000h - 6DF38000h
+frontend_direct2d                loaded at 6DEA0000h - 6DEE1000h
+frontend_direct3d9               loaded at 6DE50000h - 6DEA0000h
+d3dx9_42                         loaded at 6DAE0000h - 6DCC5000h
+d3d9                             loaded at 6DCD0000h - 6DE4A000h
+VERSION                          loaded at 747F0000h - 747F8000h
+dxcore                           loaded at 6DAA0000h - 6DAD7000h
+SciLexer                         loaded at 6D9F0000h - 6DA92000h
+clbcatq                          loaded at 77200000h - 77286000h
+Windows.UI                       loaded at 6D8D0000h - 6D9E1000h
+Windows.UI.Immersive             loaded at 6D7B0000h - 6D8C9000h
+twinapi.appcore                  loaded at 6D5B0000h - 6D7A1000h
+WinTypes                         loaded at 71F00000h - 71FF9000h
+profapi                          loaded at 736C0000h - 736DE000h
+dataexchange                     loaded at 6D550000h - 6D59C000h
+sxs                              loaded at 6D4C0000h - 6D545000h
+TextShaping                      loaded at 71440000h - 7152B000h
+directxdatabasehelper            loaded at 6CD90000h - 6CDDD000h
+cfgmgr32                         loaded at 74C90000h - 74CD0000h
+textinputframework               loaded at 6CC80000h - 6CD7F000h
+CoreMessaging                    loaded at 6CB90000h - 6CC70000h
+CoreUIComponents                 loaded at 6C8F0000h - 6CB83000h
+CRYPTBASE                        loaded at 6C8E0000h - 6C8EA000h
+jscript                          loaded at 6C800000h - 6C8CC000h
+jscript9Legacy                   loaded at 6C400000h - 6C7F6000h
+PROPSYS                          loaded at 72190000h - 72259000h
+virtdisk                         loaded at 71910000h - 71921000h
+Windows.FileExplorer.Common      loaded at 72000000h - 72098000h
+Windows.System.Launcher          loaded at 6C2C0000h - 6C3EC000h
+windows.staterepositorycore      loaded at 6C2A0000h - 6C2B8000h
+Windows.StateRepositoryPS        loaded at 6C240000h - 6C28E000h
+windows.staterepositoryclient    loaded at 71990000h - 719C7000h
+XmlLite                          loaded at 6C200000h - 6C232000h
+LINKINFO                         loaded at 6C1F0000h - 6C1FB000h
+explorerframe                    loaded at 6BF90000h - 6C1EB000h
+appresolver                      loaded at 6BEF0000h - 6BF89000h
+MPR                              loaded at 72C50000h - 72C69000h
+USERENV                          loaded at 74800000h - 74829000h
+Bcp47Langs                       loaded at 6BE90000h - 6BEDC000h
+ntshrui                          loaded at 6BE00000h - 6BE86000h
+cscapi                           loaded at 6BDE0000h - 6BDEE000h
+LvHook                           loaded at 3AA00000h - 3AB55000h
+Detoured                         loaded at 70FD0000h - 70FE4000h
+dhcpcsvc6                        loaded at 722D0000h - 722E8000h
+PP-UWP-Interop                   loaded at 6BDD0000h - 6BDDA000h
+vccorlib140                      loaded at 6BD80000h - 6BDC4000h
+dhcpcsvc                         loaded at 722B0000h - 722CB000h
+Windows.Media.Playback.Backgrou  loaded at 6BCB0000h - 6BD71000h
+MFPlat                           loaded at 6BAF0000h - 6BCA1000h
+RTWorkQ                          loaded at 6BAB0000h - 6BADF000h
+Windows.Media.MediaControl       loaded at 6BA30000h - 6BAA2000h
+MMDevAPI                         loaded at 72C70000h - 72CF7000h
+MFMediaEngine                    loaded at 6B680000h - 6BA27000h
+DEVOBJ                           loaded at 72750000h - 72775000h
+AUDIOSES                         loaded at 72570000h - 726E1000h
+Windows.Media.Devices            loaded at 6B5E0000h - 6B671000h
+Windows.Media.Playback.ProxyStu  loaded at 6B5C0000h - 6B5CD000h
+OneCoreUAPCommonProxyStub        loaded at 6B320000h - 6B5B3000h
+rasadhlp                         loaded at 6B310000h - 6B318000h
+fwpuclnt                         loaded at 6B2A0000h - 6B302000h
+resourcepolicyclient             loaded at 6B280000h - 6B290000h
+ondemandconnroutehelper          loaded at 71770000h - 71788000h
+WINNSI                           loaded at 71760000h - 7176A000h
+atlthunk                         loaded at 6B260000h - 6B26C000h
+wtdccm                           loaded at 6B240000h - 6B24E000h
+msasn1                           loaded at 72290000h - 7229E000h
+cryptnet                         loaded at 6B170000h - 6B19B000h
+wldp                             loaded at 718A0000h - 718FC000h
+drvstore                         loaded at 6B040000h - 6B16B000h
+wintrust                         loaded at 75190000h - 751F7000h
+CRYPTSP                          loaded at 6B020000h - 6B034000h
+rsaenh                           loaded at 6AFE0000h - 6B012000h
+gpapi                            loaded at 677B0000h - 677CF000h
+nvppe                            loaded at 676D0000h - 677AF000h
+D3D10Warp                        loaded at 6CDF0000h - 6D4B7000h
+wer                              loaded at 6AF00000h - 6AFCD000h
+aepic                            loaded at 6ADE0000h - 6AEEF000h
+DiagnosticDataSettings           loaded at 6B220000h - 6B22C000h
+coreprivacysettingsstore         loaded at 6B1F0000h - 6B218000h
+NETAPI32                         loaded at 74830000h - 74845000h
+DSREG                            loaded at 6AC90000h - 6ADD9000h
+
+Stack dump analysis:
+Address: 7536AED4h (KERNELBASE+16AED4h), symbol: "RaiseException" (+64h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 768B00EBh (ucrtbase+300EBh), symbol: "free_base" (+1Bh)
+Address: 768B00B8h (ucrtbase+300B8h), symbol: "free" (+18h)
+Address: 00B8EE5Eh (foobar2000+4EE5Eh)
+Address: 71A14977h (VCRUNTIME140+4977h), symbol: "CxxThrowException" (+67h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 00D454D9h (foobar2000+2054D9h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 00E23B14h (foobar2000+2E3B14h)
+Address: 00CA24ADh (foobar2000+1624ADh)
+Address: 00DF02B9h (foobar2000+2B02B9h)
+Address: 00CA20C4h (foobar2000+1620C4h)
+Address: 00E13310h (foobar2000+2D3310h)
+Address: 00DDC28Ah (foobar2000+29C28Ah)
+Address: 00CA2118h (foobar2000+162118h)
+Address: 00E13310h (foobar2000+2D3310h)
+Address: 00E13310h (foobar2000+2D3310h)
+Address: 00DF025Eh (foobar2000+2B025Eh)
+Address: 00CA21B1h (foobar2000+1621B1h)
+Address: 00E13310h (foobar2000+2D3310h)
+Address: 00B4E7C0h (foobar2000+E7C0h)
+Address: 00E13310h (foobar2000+2D3310h)
+Address: 00DD8886h (foobar2000+298886h)
+Address: 00D9F221h (foobar2000+25F221h)
+Address: 00E36648h (foobar2000+2F6648h)
+Address: 00E20184h (foobar2000+2E0184h)
+Address: 00E36648h (foobar2000+2F6648h)
+Address: 00DF0D1Dh (foobar2000+2B0D1Dh)
+Address: 00CA6EF9h (foobar2000+166EF9h)
+Address: 71A1E697h (VCRUNTIME140+E697h), symbol: "NLG_Return" (+0h)
+Address: 71A1DC7Ah (VCRUNTIME140+DC7Ah), symbol: "wcsstr" (+37Ah)
+Address: 00CA6EE5h (foobar2000+166EE5h)
+Address: 71A1DDFCh (VCRUNTIME140+DDFCh), symbol: "wcsstr" (+4FCh)
+Address: 00E6D438h (foobar2000+32D438h)
+Address: 71A138F8h (VCRUNTIME140+38F8h), symbol: "is_exception_typeof" (+AC8h)
+Address: 00E6D438h (foobar2000+32D438h)
+Address: 00CA6EE5h (foobar2000+166EE5h)
+Address: 71A14BF7h (VCRUNTIME140+4BF7h), symbol: "set_se_translator" (+1E7h)
+Address: 00CA6EE5h (foobar2000+166EE5h)
+Address: 71A1F470h (VCRUNTIME140+F470h), symbol: "strstr" (+2C0h)
+Address: 71A13119h (VCRUNTIME140+3119h), symbol: "is_exception_typeof" (+2E9h)
+Address: 00E6D438h (foobar2000+32D438h)
+Address: 00CA6EE5h (foobar2000+166EE5h)
+Address: 00E6D438h (foobar2000+32D438h)
+Address: 00E6D438h (foobar2000+32D438h)
+Address: 00E87500h (foobar2000+347500h)
+Address: 71A133A8h (VCRUNTIME140+33A8h), symbol: "is_exception_typeof" (+578h)
+Address: 00E6D438h (foobar2000+32D438h)
+Address: 00E87124h (foobar2000+347124h)
+Address: 7534F100h (KERNELBASE+14F100h), symbol: "OpenFileMappingW" (+30h)
+Address: 00E6D480h (foobar2000+32D480h)
+Address: 00E92F98h (foobar2000+352F98h)
+Address: 00CA6EE5h (foobar2000+166EE5h)
+Address: 00E6D438h (foobar2000+32D438h)
+Address: 00E874FCh (foobar2000+3474FCh)
+Address: 7534F100h (KERNELBASE+14F100h), symbol: "OpenFileMappingW" (+30h)
+Address: 00E6D480h (foobar2000+32D480h)
+Address: 71A13782h (VCRUNTIME140+3782h), symbol: "is_exception_typeof" (+952h)
+Address: 00E6D438h (foobar2000+32D438h)
+Address: 71A1DF76h (VCRUNTIME140+DF76h), symbol: "_CxxFrameHandler3" (+26h)
+Address: 00E6D438h (foobar2000+32D438h)
+Address: 00E6D438h (foobar2000+32D438h)
+Address: 77365BE2h (ntdll+B5BE2h), symbol: "RtlInterlockedCompareExchange64" (+1F2h)
+Address: 77365C00h (ntdll+B5C00h), symbol: "RtlInterlockedCompareExchange64" (+210h)
+Address: 77365BB4h (ntdll+B5BB4h), symbol: "RtlInterlockedCompareExchange64" (+1C4h)
+Address: 00DF0868h (foobar2000+2B0868h)
+Address: 7731F6F3h (ntdll+6F6F3h), symbol: "RtlUnwind" (+293h)
+Address: 00DF0868h (foobar2000+2B0868h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 7732B06Ch (ntdll+7B06Ch), symbol: "NtQueryDebugFilterState" (+Ch)
+Address: 7732BF7Fh (ntdll+7BF7Fh), symbol: "KiUserExceptionDispatcher" (+Fh)
+Address: 7536AED4h (KERNELBASE+16AED4h), symbol: "RaiseException" (+64h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 768B00EBh (ucrtbase+300EBh), symbol: "free_base" (+1Bh)
+Address: 768B00B8h (ucrtbase+300B8h), symbol: "free" (+18h)
+Address: 00B8EE5Eh (foobar2000+4EE5Eh)
+Address: 00B7DA3Ch (foobar2000+3DA3Ch)
+Address: 772F002Bh (ntdll+4002Bh), symbol: "RtlAllocateHeap" (+7ABh)
+Address: 00E87504h (foobar2000+347504h)
+Address: 7536AED4h (KERNELBASE+16AED4h), symbol: "RaiseException" (+64h)
+Address: 00B7DA3Ch (foobar2000+3DA3Ch)
+Address: 7732B2ECh (ntdll+7B2ECh), symbol: "NtRaiseException" (+Ch)
+Address: 77365DB5h (ntdll+B5DB5h), symbol: "RtlRaiseException" (+35h)
+Address: 772F2CC2h (ntdll+42CC2h), symbol: "RtlGetCurrentServiceSessionId" (+832h)
+Address: 772F2517h (ntdll+42517h), symbol: "RtlGetCurrentServiceSessionId" (+87h)
+Address: 772F002Bh (ntdll+4002Bh), symbol: "RtlAllocateHeap" (+7ABh)
+Address: 00E87504h (foobar2000+347504h)
+Address: 7536AED4h (KERNELBASE+16AED4h), symbol: "RaiseException" (+64h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 7536AEC7h (KERNELBASE+16AEC7h), symbol: "RaiseException" (+57h)
+Address: 7536AED4h (KERNELBASE+16AED4h), symbol: "RaiseException" (+64h)
+Address: 7536AED4h (KERNELBASE+16AED4h), symbol: "RaiseException" (+64h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 768B00EBh (ucrtbase+300EBh), symbol: "free_base" (+1Bh)
+Address: 768B00B8h (ucrtbase+300B8h), symbol: "free" (+18h)
+Address: 00B8EE5Eh (foobar2000+4EE5Eh)
+Address: 71A14977h (VCRUNTIME140+4977h), symbol: "CxxThrowException" (+67h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 00D454D9h (foobar2000+2054D9h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 00E23B14h (foobar2000+2E3B14h)
+Address: 00CA808Ch (foobar2000+16808Ch)
+Address: 00CA685Ch (foobar2000+16685Ch)
+Address: 71A1E697h (VCRUNTIME140+E697h), symbol: "NLG_Return" (+0h)
+Address: 71A1DC7Ah (VCRUNTIME140+DC7Ah), symbol: "wcsstr" (+37Ah)
+Address: 00CA6805h (foobar2000+166805h)
+Address: 71A1DDFCh (VCRUNTIME140+DDFCh), symbol: "wcsstr" (+4FCh)
+Address: 00E6D358h (foobar2000+32D358h)
+Address: 71A138F8h (VCRUNTIME140+38F8h), symbol: "is_exception_typeof" (+AC8h)
+Address: 00E6D358h (foobar2000+32D358h)
+Address: 00CA6805h (foobar2000+166805h)
+Address: 71A14BF7h (VCRUNTIME140+4BF7h), symbol: "set_se_translator" (+1E7h)
+Address: 00CA6805h (foobar2000+166805h)
+Address: 71A1F470h (VCRUNTIME140+F470h), symbol: "strstr" (+2C0h)
+Address: 71A13119h (VCRUNTIME140+3119h), symbol: "is_exception_typeof" (+2E9h)
+Address: 00E6D358h (foobar2000+32D358h)
+Address: 00CA6805h (foobar2000+166805h)
+Address: 00E6D358h (foobar2000+32D358h)
+Address: 00E6D358h (foobar2000+32D358h)
+Address: 00E87500h (foobar2000+347500h)
+Address: 71A133A8h (VCRUNTIME140+33A8h), symbol: "is_exception_typeof" (+578h)
+Address: 00E6D358h (foobar2000+32D358h)
+Address: 00E87124h (foobar2000+347124h)
+Address: 7534F100h (KERNELBASE+14F100h), symbol: "OpenFileMappingW" (+30h)
+Address: 00E6D3FCh (foobar2000+32D3FCh)
+Address: 00E92F98h (foobar2000+352F98h)
+Address: 00CA6805h (foobar2000+166805h)
+Address: 00E6D358h (foobar2000+32D358h)
+Address: 00E874FCh (foobar2000+3474FCh)
+Address: 7534F100h (KERNELBASE+14F100h), symbol: "OpenFileMappingW" (+30h)
+Address: 00E6D3FCh (foobar2000+32D3FCh)
+Address: 71A13782h (VCRUNTIME140+3782h), symbol: "is_exception_typeof" (+952h)
+Address: 00E6D358h (foobar2000+32D358h)
+Address: 71A1DF76h (VCRUNTIME140+DF76h), symbol: "_CxxFrameHandler3" (+26h)
+Address: 00E6D358h (foobar2000+32D358h)
+Address: 00E6D358h (foobar2000+32D358h)
+Address: 77365BE2h (ntdll+B5BE2h), symbol: "RtlInterlockedCompareExchange64" (+1F2h)
+Address: 77365C00h (ntdll+B5C00h), symbol: "RtlInterlockedCompareExchange64" (+210h)
+Address: 77365BB4h (ntdll+B5BB4h), symbol: "RtlInterlockedCompareExchange64" (+1C4h)
+Address: 00DF0832h (foobar2000+2B0832h)
+Address: 7731F6F3h (ntdll+6F6F3h), symbol: "RtlUnwind" (+293h)
+Address: 00DF0832h (foobar2000+2B0832h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 76ECC280h (USER32+3C280h), symbol: "WindowFromPoint" (+1050h)
+Address: 76EB802Ah (USER32+2802Ah), symbol: "CallWindowProcW" (+10Ah)
+Address: 76EB802Ah (USER32+2802Ah), symbol: "CallWindowProcW" (+10Ah)
+Address: 6B261B30h (atlthunk+1B30h)
+Address: 7732BF7Fh (ntdll+7BF7Fh), symbol: "KiUserExceptionDispatcher" (+Fh)
+Address: 7536AED4h (KERNELBASE+16AED4h), symbol: "RaiseException" (+64h)
+Address: 00E87504h (foobar2000+347504h)
+Address: 768B00EBh (ucrtbase+300EBh), symbol: "free_base" (+1Bh)
+Address: 768B00B8h (ucrtbase+300B8h), symbol: "free" (+18h)
+Address: 00B8EE5Eh (foobar2000+4EE5Eh)
+Address: 00B7DA3Ch (foobar2000+3DA3Ch)
+Address: 00E87504h (foobar2000+347504h)
+Address: 7536AED4h (KERNELBASE+16AED4h), symbol: "RaiseException" (+64h)
+Address: 00B7DA3Ch (foobar2000+3DA3Ch)
+
+Environment:
+App: foobar2000 v2.26
+Arch: x86
+UI: Columns UI 3.7.0
+
+Components:
+Core (2026-10-01 11:13:56 UTC)
+    foobar2000 core 2.26
+foo_converter (2026-10-01 11:14:00 UTC)
+    Converter 2.26
+foo_dsp_eq (2026-10-01 11:14:02 UTC)
+    Equalizer 1.2.4
+foo_dsp_std (2026-10-01 11:14:04 UTC)
+    ARDFTSRC Resampler 0.5
+    Standard DSP Array 2.26
+foo_fileops (2026-10-01 11:14:06 UTC)
+    File Operations 2.26
+foo_freedb2 (2026-10-01 11:14:08 UTC)
+    Online Tagger 0.10
+foo_gep (2020-08-13 15:23:18 UTC)
+    Game Emu Player 1.218
+foo_input_std (2026-10-01 11:14:08 UTC)
+    CD Audio Decoder 2.26
+    FFmpeg Decoders N-122697-gfcfb33922f
+    FLAC Decoder git-011a9914 20260127
+    Opus Decoder 1.6-19-gd8bdf8f3
+    Standard Input Array 2.26
+    WavPack Decoder 5.9.0
+foo_midi (2025-10-04 11:06:04 UTC)
+    MIDI Player 3.2.3.0
+foo_out_upnp (2026-10-01 11:09:18 UTC)
+    UPnP Tools 2.26
+foo_playcount (2026-04-16 07:05:00 UTC)
+    Playback Statistics 3.1.10
+foo_ui_columns (2026-10-05 18:08:44 UTC)
+    Columns UI 3.7.0
+foo_ui_std (2026-10-01 11:14:10 UTC)
+    Album List 2.26
+    Decoding Speed Test 2.26
+    Default User Interface 2.26
+    File Integrity Verifier 2.26
+foo_uie_albumlist (2026-07-30 11:32:40 UTC)
+    Album list panel 2.2.0
+foo_uie_biography (2010-12-13 20:38:26 UTC)
+    Biography View 0.4.2.4
+foo_uie_elplaylist (2011-01-06 09:07:35 UTC)
+    ELPlaylist 0.6.9.1.2(beta)
+foo_uie_esplaylist (2011-05-29 09:36:21 UTC)
+    EsPlaylist 0.1.3.9
+foo_uie_lyrics3 (2023-11-18 07:53:00 UTC)
+    Lyric Show Panel 3 0.6
+foo_uie_panel_splitter (2010-05-27 11:03:02 UTC)
+    Panel Stack Splitter 0.3.8.3(alpha)
+foo_uie_vis_channel_spectrum (2010-03-07 08:23:55 UTC)
+    Channel Spectrum panel 0.17.2
+foo_uie_vis_peakmeter_spectrum (2010-03-07 08:24:47 UTC)
+    Peakmeter Spectrum Visualisation 0.2.0.0 beta
+foo_uie_wsh_panel_mod (2013-03-14 00:33:28 UTC)
+    WSH Panel Mod 1.5.6
+foo_unpack (2026-10-01 11:14:12 UTC)
+    ZIP/GZIP/RAR/7-Zip Reader 2.26
+foo_w7shell (2010-01-17 00:09:20 UTC)
+    Windows 7 integration 0.2.9.1
+foo_wave_seekbar (2014-02-08 19:37:10 UTC)
+    Waveform seekbar 0.2.45
+
+Recent events:
+[676812ms] deleteConfigInt(core.playbackStatistics.bumped)
+[676812ms] deleteConfigInt(core.playbackStatistics.position)
+[676812ms] setConfigFloat(core.totalTimePlayed,1600303.3725708)
+[676812ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[676828ms] Opening track for playback: "C:\Temp\DdoSounds\0A0080D2.ogg"
+[676828ms] deleteConfigInt(core.playbackStatistics.playing)
+[676828ms] deleteConfigInt(core.playbackStatistics.bumped)
+[676828ms] deleteConfigInt(core.playbackStatistics.position)
+[676844ms] setConfigFloat(core.totalTimePlayed,1600303.3725708)
+[676844ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[676844ms] Opening track for playback: "C:\Temp\DdoSounds\0A0080D4.ogg"
+[676859ms] Opened using: foobar2000 Ogg Demuxer
+[677406ms] setConfigFloat(core.totalTimePlayed,1600303.8493315)
+[677766ms] deleteConfigInt(core.playbackStatistics.playing)
+[677766ms] deleteConfigInt(core.playbackStatistics.bumped)
+[677766ms] deleteConfigInt(core.playbackStatistics.position)
+[677781ms] setConfigFloat(core.totalTimePlayed,1600304.0994011)
+[677781ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[677797ms] Opening track for playback: "C:\Temp\DdoSounds\0A0080FA.ogg"
+[677797ms] deleteConfigInt(core.playbackStatistics.playing)
+[677797ms] deleteConfigInt(core.playbackStatistics.bumped)
+[677797ms] deleteConfigInt(core.playbackStatistics.position)
+[677797ms] setConfigFloat(core.totalTimePlayed,1600304.0994011)
+[677797ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[677812ms] Opening track for playback: "C:\Temp\DdoSounds\0A0081F9.ogg"
+[677812ms] deleteConfigInt(core.playbackStatistics.playing)
+[677812ms] deleteConfigInt(core.playbackStatistics.bumped)
+[677812ms] deleteConfigInt(core.playbackStatistics.position)
+[677828ms] setConfigFloat(core.totalTimePlayed,1600304.0994011)
+[677828ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[677828ms] Opening track for playback: "C:\Temp\DdoSounds\0A0081FC.ogg"
+[677828ms] deleteConfigInt(core.playbackStatistics.playing)
+[677828ms] deleteConfigInt(core.playbackStatistics.bumped)
+[677828ms] deleteConfigInt(core.playbackStatistics.position)
+[677844ms] setConfigFloat(core.totalTimePlayed,1600304.0994011)
+[677844ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[677859ms] Opening track for playback: "C:\Temp\DdoSounds\0A0082AD.ogg"
+[677859ms] deleteConfigInt(core.playbackStatistics.playing)
+[677859ms] deleteConfigInt(core.playbackStatistics.bumped)
+[677859ms] deleteConfigInt(core.playbackStatistics.position)
+[677859ms] setConfigFloat(core.totalTimePlayed,1600304.0994011)
+[677859ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[677875ms] Opening track for playback: "C:\Temp\DdoSounds\0A0082C3.ogg"
+[677875ms] Opened using: foobar2000 Ogg Demuxer
+[678422ms] setConfigFloat(core.totalTimePlayed,1600304.5618322)
+[678781ms] deleteConfigInt(core.playbackStatistics.playing)
+[678781ms] deleteConfigInt(core.playbackStatistics.bumped)
+[678781ms] deleteConfigInt(core.playbackStatistics.position)
+[678797ms] setConfigFloat(core.totalTimePlayed,1600304.8120377)
+[678797ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[678797ms] Opening track for playback: "C:\Temp\DdoSounds\0A0082C8.ogg"
+[678812ms] Opened using: foobar2000 Ogg Demuxer
+[679375ms] setConfigFloat(core.totalTimePlayed,1600305.3443193)
+[681734ms] deleteConfigInt(core.playbackStatistics.playing)
+[681734ms] deleteConfigInt(core.playbackStatistics.bumped)
+[681734ms] deleteConfigInt(core.playbackStatistics.position)
+[681750ms] setConfigFloat(core.totalTimePlayed,1600307.5707484)
+[681750ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[681750ms] Opening track for playback: "C:\Temp\DdoSounds\0A0082D2.ogg"
+[681766ms] Opened using: foobar2000 Ogg Demuxer
+[681812ms] setConfigFloat(core.totalTimePlayed,1600307.5707484)
+[682078ms] deleteConfigInt(core.playbackStatistics.playing)
+[682078ms] deleteConfigInt(core.playbackStatistics.bumped)
+[682078ms] deleteConfigInt(core.playbackStatistics.position)
+[682078ms] setConfigFloat(core.totalTimePlayed,1600307.7933509)
+[682078ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[682094ms] Opening track for playback: "C:\Temp\DdoSounds\0A0082E3.ogg"
+[682094ms] Opened using: foobar2000 Ogg Demuxer
+[682672ms] setConfigFloat(core.totalTimePlayed,1600308.3424571)
+[683047ms] deleteConfigInt(core.playbackStatistics.playing)
+[683047ms] deleteConfigInt(core.playbackStatistics.bumped)
+[683047ms] deleteConfigInt(core.playbackStatistics.position)
+[683047ms] setConfigFloat(core.totalTimePlayed,1600308.5303431)
+[683062ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[683062ms] Opening track for playback: "C:\Temp\DdoSounds\0A0082E5.ogg"
+[683062ms] deleteConfigInt(core.playbackStatistics.playing)
+[683062ms] deleteConfigInt(core.playbackStatistics.bumped)
+[683062ms] deleteConfigInt(core.playbackStatistics.position)
+[683078ms] setConfigFloat(core.totalTimePlayed,1600308.5303431)
+[683078ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[683094ms] Opening track for playback: "C:\Temp\DdoSounds\0A0082E9.ogg"
+[683094ms] deleteConfigInt(core.playbackStatistics.playing)
+[683094ms] deleteConfigInt(core.playbackStatistics.bumped)
+[683094ms] deleteConfigInt(core.playbackStatistics.position)
+[683094ms] setConfigFloat(core.totalTimePlayed,1600308.5303431)
+[683094ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[683109ms] Opening track for playback: "C:\Temp\DdoSounds\0A0082F9.ogg"
+[683109ms] deleteConfigInt(core.playbackStatistics.playing)
+[683109ms] deleteConfigInt(core.playbackStatistics.bumped)
+[683109ms] deleteConfigInt(core.playbackStatistics.position)
+[683125ms] setConfigFloat(core.totalTimePlayed,1600308.5303431)
+[683125ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[683125ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083CE.ogg"
+[683141ms] Opened using: foobar2000 Ogg Demuxer
+[683703ms] setConfigFloat(core.totalTimePlayed,1600309.0710793)
+[686859ms] deleteConfigInt(core.playbackStatistics.playing)
+[686859ms] deleteConfigInt(core.playbackStatistics.bumped)
+[686859ms] deleteConfigInt(core.playbackStatistics.position)
+[686859ms] setConfigFloat(core.totalTimePlayed,1600312.1195631)
+[686859ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[686875ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083D1.ogg"
+[686891ms] Opened using: foobar2000 Ogg Demuxer
+[686922ms] setConfigFloat(core.totalTimePlayed,1600312.1195631)
+[806234ms] setConfigString(preferences.lastOpenPage,56EB56AB-EDFE-4853-90F7-C6B834FA2F6B)
+[812187ms] Seekbar: taking Direct2D1 path.
+[812187ms] Seekbar: Frontend initialized.
+[813891ms] Seekbar: taking Direct3D9 path.
+[814016ms] Seekbar: Frontend initialized.
+[815297ms] Seekbar: taking GDI path.
+[815297ms] Seekbar: Frontend initialized.
+[816719ms] Seekbar: taking Direct2D1 path.
+[816719ms] Seekbar: Frontend initialized.
+[818156ms] Seekbar: taking Direct3D9 path.
+[818281ms] Seekbar: Frontend initialized.
+[823953ms] deleteConfigInt(core.playbackStatistics.playing)
+[823953ms] deleteConfigInt(core.playbackStatistics.bumped)
+[823953ms] deleteConfigInt(core.playbackStatistics.position)
+[823969ms] setConfigFloat(core.totalTimePlayed,1600315.4390631)
+[823969ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[823984ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083D1.ogg"
+[823984ms] Opened using: foobar2000 Ogg Demuxer
+[824031ms] setConfigFloat(core.totalTimePlayed,1600315.4390631)
+[829891ms] Seekbar: taking GDI path.
+[829891ms] Seekbar: Frontend initialized.
+[830484ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083D2.ogg"
+[830500ms] Opened using: foobar2000 Ogg Demuxer
+[831281ms] setConfigFloat(core.totalTimePlayed,1600322.6876777)
+[834906ms] Seekbar: taking Direct2D1 path.
+[834906ms] Seekbar: Frontend initialized.
+[837000ms] Seekbar: taking Direct3D9 path.
+[837125ms] Seekbar: Frontend initialized.
+[837250ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083D7.ogg"
+[837250ms] Opened using: foobar2000 Ogg Demuxer
+[838234ms] setConfigFloat(core.totalTimePlayed,1600329.5688537)
+[839219ms] Seekbar: taking GDI path.
+[839219ms] Seekbar: Frontend initialized.
+[843687ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083E6.ogg"
+[843703ms] Opened using: foobar2000 Ogg Demuxer
+[844734ms] setConfigFloat(core.totalTimePlayed,1600336.0086284)
+[850594ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083F2.ogg"
+[850594ms] Opened using: foobar2000 Ogg Demuxer
+[851422ms] setConfigFloat(core.totalTimePlayed,1600342.8327696)
+[857094ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083F5.ogg"
+[857109ms] Opened using: foobar2000 Ogg Demuxer
+[858141ms] setConfigFloat(core.totalTimePlayed,1600349.5557143)
+[864609ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083FB.ogg"
+[864625ms] Opened using: foobar2000 Ogg Demuxer
+[897359ms] setConfigInt(core.activePlaylistIndex,7)
+[898734ms] deleteConfigInt(core.playbackStatistics.playing)
+[898734ms] deleteConfigInt(core.playbackStatistics.bumped)
+[898734ms] deleteConfigInt(core.playbackStatistics.position)
+[898734ms] setConfigFloat(core.totalTimePlayed,1600356.6585631)
+[898750ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[898750ms] Opening track for playback: "D:\Music\FLAC\Games\Recca - MOM (Neon Pulse1).flac"
+[898750ms] Opened using: foobar2000 FLAC Decoder
+[898766ms] setConfigFloat(core.totalTimePlayed,1600356.6585631)
+[920594ms] setConfigInt(core.activePlaylistIndex,11)
+[921781ms] deleteConfigInt(core.playbackStatistics.playing)
+[921781ms] deleteConfigInt(core.playbackStatistics.bumped)
+[921781ms] deleteConfigInt(core.playbackStatistics.position)
+[921797ms] setConfigFloat(core.totalTimePlayed,1600379.0913126)
+[921797ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[921812ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083F5.ogg"
+[921812ms] Opened using: foobar2000 Ogg Demuxer
+[921844ms] setConfigFloat(core.totalTimePlayed,1600379.0913126)
+[924687ms] deleteConfigInt(core.playbackStatistics.playing)
+[924687ms] deleteConfigInt(core.playbackStatistics.bumped)
+[924687ms] deleteConfigInt(core.playbackStatistics.position)
+[924703ms] setConfigFloat(core.totalTimePlayed,1600381.8149186)
+[924703ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[924719ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083FB.ogg"
+[924719ms] Opened using: foobar2000 Ogg Demuxer
+[924750ms] setConfigFloat(core.totalTimePlayed,1600381.8149186)
+[925141ms] deleteConfigInt(core.playbackStatistics.playing)
+[925141ms] deleteConfigInt(core.playbackStatistics.bumped)
+[925141ms] deleteConfigInt(core.playbackStatistics.position)
+[925156ms] setConfigFloat(core.totalTimePlayed,1600381.9947232)
+[925156ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[925156ms] Opening track for playback: "C:\Temp\DdoSounds\0A0083FF.ogg"
+[925156ms] Opened using: foobar2000 Ogg Demuxer
+[925187ms] setConfigFloat(core.totalTimePlayed,1600381.9947232)
+[925625ms] deleteConfigInt(core.playbackStatistics.playing)
+[925625ms] deleteConfigInt(core.playbackStatistics.bumped)
+[925625ms] deleteConfigInt(core.playbackStatistics.position)
+[925625ms] setConfigFloat(core.totalTimePlayed,1600382.4160379)
+[925625ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[925641ms] Opening track for playback: "C:\Temp\DdoSounds\0A0084C0.ogg"
+[925641ms] Opened using: foobar2000 Ogg Demuxer
+[925672ms] setConfigFloat(core.totalTimePlayed,1600382.4160379)
+[926172ms] deleteConfigInt(core.playbackStatistics.playing)
+[926172ms] deleteConfigInt(core.playbackStatistics.bumped)
+[926172ms] deleteConfigInt(core.playbackStatistics.position)
+[926172ms] setConfigFloat(core.totalTimePlayed,1600382.9214488)
+[926187ms] setConfigBlob(config_object.B572C86F-4206-40A0-8476-C7B27E74DB2D,1 bytes)
+[926187ms] Opening track for playback: "C:\Temp\DdoSounds\0A0084C1.ogg"
+[926187ms] Opened using: foobar2000 Ogg Demuxer
+[926219ms] setConfigFloat(core.totalTimePlayed,1600382.9214488)
+[930781ms] setConfigInt(core.activePlaylistIndex,0)
+[944266ms] w7shell: failed to set thumbnail: 0x80070057
+[948984ms] Preferences page creation failed: Undefined error
+
+
+Machine specifications:
+OS: Windows 10.0.26200 x64
+CPU: Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz, features: MMX SSE SSE2 SSE3 SSE4.1 SSE4.2 AVX LZCNT
+CPU threads: 6
+Audio: Speakers (Sound Blaster Z); Speakers (High Definition Audio Device)
